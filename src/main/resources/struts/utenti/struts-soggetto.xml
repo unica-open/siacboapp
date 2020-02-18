@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="soggetto" extends="utenti" namespace="/">
+
+
+
+		<action name="elencoSoggetti" class="elencoSoggettiAction">
+			<result name="success">/jsp/utenti/soggetto/elencoSoggetti.jsp
+			</result>
+		</action>
+
+		<action name="soggetto" class="soggettoAction">
+			<result name="success">/jsp/utenti/soggetto/soggetto.jsp
+			</result>
+			<result name="elencoSoggetti" type="redirectAction">elencoSoggetti</result>
+		</action>
+
+		<action name="eliminaSoggetto" class="eliminaSoggettoAction">
+			<result name="success" type="redirectAction">elencoSoggetti</result>
+		</action>
+
+
+	</package>
+
+
+
+</struts>

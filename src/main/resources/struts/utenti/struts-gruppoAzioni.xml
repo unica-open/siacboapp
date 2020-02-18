@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gruppoAzioni" extends="utenti" namespace="/">
+
+
+	
+		
+		<action name="elencoGruppiAzioni"  class="elencoGruppiAzioniAction" >
+			<result name="success" >/jsp/utenti/gruppoAzioni/elencoGruppiAzioni.jsp</result>
+		</action>
+	
+			
+		<action name="gruppoAzioni"  class="gruppoAzioniAction" >
+			<result name="success" >/jsp/utenti/gruppoAzioni/gruppoAzioni.jsp</result>
+			<result name="elencoGruppiAzioni" type="redirectAction">elencoGruppiAzioni</result>
+		</action>
+
+		<action name="eliminaGruppoAzioni" class="eliminaGruppoAzioniAction">
+			<result name="success" type="redirectAction">elencoGruppiAzioni</result>
+		</action>
+
+	
+		
+	</package>
+	
+	
+	
+</struts>

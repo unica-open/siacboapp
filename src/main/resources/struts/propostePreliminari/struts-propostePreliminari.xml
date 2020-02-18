@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="propostePreliminari" extends="default" namespace="/">
+
+		<action name="gestionePropostePreliminariSpesa" class="gestionePropostePreliminariSpesaAction">
+			<result name="success">/jsp/propostePreliminari/gestionePropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/gestionePropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+
+		<action name="elencoPropostePreliminariSpesa" class="elencoPropostePreliminariSpesaAction">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+
+		<action name="elencoPropostePreliminariEntrata" class="elencoPropostePreliminariEntrataAction">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+
+
+		<action name="propostaPreliminareSpesa"  class="propostaPreliminareSpesaAction" >
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+
+
+		<action name="propostaPreliminareEntrata"  class="propostaPreliminareEntrataAction" >
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+
+
+	
+	</package>
+
+
+
+</struts>

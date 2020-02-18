@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gestioneLimiteImpegnabile" extends="default"
+		namespace="/">
+
+		<action name="gestioneLimiteImpegnabile" class="gestioneLimiteImpegnabileAction">
+			<result name="success">/jsp/limiteImpegnabile/gestioneLimiteImpegnabile.jsp
+			</result>
+			<result name="input">/jsp/limiteImpegnabile/gestioneLimiteImpegnabile.jsp
+			</result>
+			<result name="cerca" type="redirectAction">
+				<param name="actionName">risultatiRicercaLimiteImpegnabile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+
+
+		<action name="risultatiRicercaLimiteImpegnabile" class="risultatiRicercaLimiteImpegnabileAction">
+			<result name="success">/jsp/limiteImpegnabile/risultatiRicercaLimiteImpegnabile.jsp
+			</result>
+		</action>
+		
+		
+		
+		<action name="importiLimiteImpegnabile"  class="importiLimiteImpegnabileAction" >
+			<result name="input" >/jsp/limiteImpegnabile/importiLimiteImpegnabile.jsp</result>
+			<result name="success" >/jsp/limiteImpegnabile/importiLimiteImpegnabile.jsp</result>
+			<result name="risultatiRicercaLimiteImpegnabile" type="redirectAction">risultatiRicercaLimiteImpegnabile</result>
+		</action>
+
+		
+	</package>
+</struts>

@@ -1,0 +1,38 @@
+/*
+*SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+*SPDX-License-Identifier: EUPL-1.2
+*/
+
+
+.simple-pagination-navigation
+{
+	text-align: right;
+	margin-bottom: 30px;
+}
+
+.simple-pagination-first, .simple-pagination-previous, .simple-pagination-page-numbers, .simple-pagination-next, .simple-pagination-last
+{
+	display: inline-block;
+	
+}
+
+
+.simple-pagination-navigation a
+{
+	float: left;
+	line-height:24px;
+	font-weight: normal;
+	text-align: center;
+	min-width: 14px;
+	padding: 0 10px;
+	color: #496684;
+
+}
+
+.simple-pagination-page-numbers .simple-pagination-navigation-disabled
+{
+    color: #000;
+    cursor: default;
+    font-size: 1.2em;
+    font-weight: 700;
+}

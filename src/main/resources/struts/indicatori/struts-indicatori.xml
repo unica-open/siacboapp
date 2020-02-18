@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="indicatori" extends="default" namespace="/">
+
+
+		<action name="confNumeroAnniBilancioPrev"  class="confNumeroAnniBilancioPrevAction" >
+			<result name="success" >/jsp/indicatori/confNumeroAnniBilancioPrev.jsp</result>
+			<result name="confNumeroAnniBilancioPrev" type="redirectAction">confNumeroAnniBilancioPrev</result>
+		</action>
+
+		<action name="confIndicatoriEntrata"  class="confIndicatoriEntrataAction" >
+			<result name="success" >/jsp/indicatori/confIndicatoriEntrata.jsp</result>
+			<result name="confIndicatoriEntrata" type="redirectAction">confIndicatoriEntrata</result>
+		</action>
+
+		<action name="confIndicatoriSpesa"  class="confIndicatoriSpesaAction" >
+			<result name="success" >/jsp/indicatori/confIndicatoriSpesa.jsp</result>
+			<result name="confIndicatoriSpesa" type="redirectAction">confIndicatoriSpesa</result>
+		</action>
+
+		<action name="confIndicatoriSintetici"  class="confIndicatoriSinteticiAction" >
+			<result name="success" >/jsp/indicatori/confIndicatoriSintetici.jsp</result>
+			<result name="confIndicatoriSintetici" type="redirectAction">confIndicatoriSintetici</result>
+		</action>
+	
+		<action name="confIndicatoriSinteticiMissione13"  class="confIndicatoriSinteticiMissione13Action" >
+			<result name="success" >/jsp/indicatori/confIndicatoriSinteticiMissione13.jsp</result>
+			<result name="confIndicatoriSinteticiMissione13" type="redirectAction">confIndicatoriSinteticiMissione13</result>
+		</action>
+	
+	</package>
+
+</struts>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report" extends="default" namespace="/">
+
+
+
+		<action name="elencoImportiReport" class="elencoImportiReportAction">
+			<result name="success">/jsp/report/elencoImportiReport.jsp</result>
+			<result name="input">/jsp/report/elencoImportiReport.jsp</result>
+			<result name="elencoImportiReport" type="redirectAction">
+				<param name="actionName">elencoImportiReport</param>
+				<param name="namespace">/</param>
+				<param name="idReport">${idReport}</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+
+
+
+
+	</package>
+
+
+
+</struts>

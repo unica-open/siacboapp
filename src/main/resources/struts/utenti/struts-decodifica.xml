@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="decodifica" extends="utenti" namespace="/">
+
+
+	
+		
+		<action name="elencoDecodifiche"  class="elencoDecodificheAction" >
+			<result name="success" >/jsp/utenti/decodifica/elencoDecodifiche.jsp</result>
+		</action>
+	
+			
+		<action name="decodifica"  class="decodificaAction" >
+			<result name="success" >/jsp/utenti/decodifica/decodifica.jsp</result>
+			<result name="elencoDecodifiche" type="redirectAction">elencoDecodifiche</result>
+		</action>
+
+		<action name="messaggioInformativo"  class="messaggioInformativoAction" >
+			<result name="success" >/jsp/utenti/decodifica/messaggioInformativo.jsp</result>
+			<result name="homeUtenti" type="redirectAction">homeUtenti</result>
+		</action>
+
+	
+		
+	</package>
+	
+	
+	
+</struts>

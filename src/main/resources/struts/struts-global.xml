@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.ui.theme" value="siac" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.mapper.action.prefix.enabled" value="true"/>
+	<constant name="struts.mapper.action.prefix.crossNamespaces" value="true"/>
+
+	<!-- FIXME Ho copiato qui 3 tipologie di gestione degli errori che facevamo 
+		su DMAWA, che possiamo anche riusare in SIAC -->
+
+	<package name="default" extends="struts-default" namespace="/">
+
+
+		<interceptors>
+			<interceptor name="logInterceptor"
+				class="it.csi.siac.siaccommonapp.interceptor.LogInterceptor" />
+
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="i18n" />
+
+
+
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+
+
+
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />
+
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="multiselect" />
+
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+
+
+
+
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+
+
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">execute</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">execute</param>
+				</interceptor-ref>
+				<interceptor-ref name="debugging" />
+
+
+
+				<interceptor-ref name="logInterceptor" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="myStack" />
+
+
+		<global-results>
+			<result name="utenteNonLoggato" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/login</param>
+				<param name="fromPortal">INTERNET_RUPAR</param>
+				<param name="cod_servizio">DMAWA</param>
+			</result>
+			<result name="utenteNonConfigurato">/jsp/utenteNonConfigurato.jsp</result>
+			<result name="failure">/jsp/failure.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="utenteNonLoggato"
+				exception="it.csi.siac.siacboapp.frontend.ui.exception.UtenteNonLoggatoException" />
+			<exception-mapping result="utenteNonConfigurato"
+				exception="it.csi.siac.siacboapp.frontend.ui.exception.UtenteNonConfigurato" />
+			<exception-mapping result="failure"
+				exception="it.csi.siac.siacboapp.frontend.ui.exception.ApplicationException" />
+
+			<!-- <exception-mapping result="failure" exception="java.lang.Exception" 
+				/> -->
+		</global-exception-mappings>
+
+		<!-- Aggiungere il mapping delle altre azioni possibili -->
+		<!-- ATTENZIONE ALLA NOMENCLATURA!! -->
+
+  
+		<action name="azioneRichiesta" class="azioneRichiestaAction">
+
+			<result name="OP-BKOF000-prototipi" type="redirectAction">
+				<param name="actionName">homePrototipi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF001-utenti" type="redirectAction">
+				<param name="actionName">homeUtenti</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF002-uploadFile" type="redirectAction">
+				<param name="actionName">uploadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF003-ricercaFile" type="redirectAction">
+				<param name="actionName">ricercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+		<result name="OP-BKOF004-setProgetti" type="redirectAction">
+				<param name="actionName">elencoSetProgetti</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF005-gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF006-ricercaDistinte" type="redirectAction">
+				<param name="actionName">ricercaFlussi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF007-gestioneLimiteImpegnabile" type="redirectAction">
+				<param name="actionName">gestioneLimiteImpegnabile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF008-gestioneConfIndicatoriEntrata" type="redirectAction">
+				<param name="actionName">confIndicatoriEntrata</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF009-gestioneConfIndicatoriSpesa" type="redirectAction">
+				<param name="actionName">confIndicatoriSpesa</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF010-gestioneConfIndicatoriSint" type="redirectAction">
+				<param name="actionName">confIndicatoriSintetici</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF011-gestioneConfIndicatoriSintMiss13" type="redirectAction">
+				<param name="actionName">confIndicatoriSinteticiMissione13</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF012-configuraNumeroAnniBilancioPrev" type="redirectAction">
+				<param name="actionName">confNumeroAnniBilancioPrev</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-GESC-importiReport" type="redirectAction">
+				<param name="actionName">elencoImportiReport</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-COM-gestPropostePreliminariSpesaSettore" type="redirectAction">
+				<param name="actionName">gestionePropostePreliminariSpesa</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-COM-gestPropostePreliminariSpesaDirigente" type="redirectAction">
+				<param name="actionName">gestionePropostePreliminariSpesa</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+		</action>
+
+
+		<action name="home" class="homeAction">
+			<result name="success">/jsp/home.jsp</result>
+		</action>
+		
+		<action name="redirectToCruscotto" class="redirectToCruscottoAction">
+			<result name="success" type="redirect">/../siaccruapp/home.do</result>
+		</action>
+		
+		
+        <action name="logout" class="logoutAction">
+			<result name="success" type="redirect" >/../siacrepapp/logout.do</result>
+		</action>
+        
+		
+
+	</package>
+</struts>

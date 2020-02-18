@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gestioneFile" extends="default" namespace="/">
+
+		<action name="uploadFile" class="uploadFileAction">
+			<result name="success">/jsp/gestioneFile/uploadFile.jsp</result>
+			<result name="input">/jsp/gestioneFile/uploadFile.jsp</result>
+
+		</action>
+
+
+		<action name="ricercaFile" class="ricercaFileAction">
+			<result name="success">/jsp/gestioneFile/ricercaFile.jsp</result>
+			<result name="input">/jsp/gestioneFile/ricercaFile.jsp</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+
+
+		<action name="risultatiRicercaFile" class="risultatiRicercaFileAction">
+			<result name="success">/jsp/gestioneFile/risultatiRicercaFile.jsp
+			</result>
+			<result name="input">/jsp/gestioneFile/risultatiRicercaFile.jsp
+			</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+
+		<action name="downloadFile" class="downloadFileAction">
+			<result name="success" type="stream">
+				<param name="contentType">${contentType}</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+
+
+
+	</package>
+
+
+
+</struts>
