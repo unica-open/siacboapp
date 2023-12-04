@@ -20,6 +20,18 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="success" >/jsp/utenti/account/account.jsp</result>
 			<result name="elencoAccount" type="redirectAction">elencoAccount</result>
 		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="account_create"  class="accountAction" method="create">
+			<result name="success" >/jsp/utenti/account/account.jsp</result>
+			<result name="elencoAccount" type="redirectAction">elencoAccount</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="account_update"  class="accountAction" method="update">
+			<result name="success" >/jsp/utenti/account/account.jsp</result>
+			<result name="elencoAccount" type="redirectAction">elencoAccount</result>
+		</action>
 
 		<action name="eliminaAccount" class="eliminaAccountAction">
 			<result name="success" type="redirectAction">elencoAccount</result>

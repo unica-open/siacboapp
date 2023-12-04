@@ -33,6 +33,10 @@ public class DecodificaService {
 	public List<BkoTSystemTable> getElencoTabelleDecodifica() {
 		return bkoTSystemTableRepository.getTablesByType("d");
 	}
+	//SIAC-8092 si adegua la ricerca al filtro per le tabelle usate con relazioni ad altre tabelle
+	public List<BkoTSystemTable> getElencoTabelleDecodificaUsate() {
+		return bkoTSystemTableRepository.getTablesByTypeAndColumnName("d", "ente_proprietario_id");
+	}
 
 	public BkoTSystemTable getTabellaByName(String tableName) {
 		return bkoTSystemTableRepository.getTableByName(tableName);

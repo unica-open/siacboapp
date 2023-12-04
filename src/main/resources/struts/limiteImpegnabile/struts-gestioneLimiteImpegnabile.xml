@@ -20,7 +20,19 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="method">execute</param>
 			</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="gestioneLimiteImpegnabile_cerca" class="gestioneLimiteImpegnabileAction" method="cerca">
+			<result name="success">/jsp/limiteImpegnabile/gestioneLimiteImpegnabile.jsp
+			</result>
+			<result name="input">/jsp/limiteImpegnabile/gestioneLimiteImpegnabile.jsp
+			</result>
+			<result name="cerca" type="redirectAction">
+				<param name="actionName">risultatiRicercaLimiteImpegnabile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
 
 		<action name="risultatiRicercaLimiteImpegnabile" class="risultatiRicercaLimiteImpegnabileAction">
 			<result name="success">/jsp/limiteImpegnabile/risultatiRicercaLimiteImpegnabile.jsp
@@ -35,6 +47,11 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="risultatiRicercaLimiteImpegnabile" type="redirectAction">risultatiRicercaLimiteImpegnabile</result>
 		</action>
 
-		
+		<!-- SIAC-8699 -->
+		<action name="importiLimiteImpegnabile_update"  class="importiLimiteImpegnabileAction" method="update">
+			<result name="input" >/jsp/limiteImpegnabile/importiLimiteImpegnabile.jsp</result>
+			<result name="success" >/jsp/limiteImpegnabile/importiLimiteImpegnabile.jsp</result>
+			<result name="risultatiRicercaLimiteImpegnabile" type="redirectAction">risultatiRicercaLimiteImpegnabile</result>
+		</action>		
 	</package>
 </struts>

@@ -6,16 +6,16 @@ package it.csi.siac.siacboapp.util.entitywrapper;
 
 public class SiacTAttoAmmWrapper extends BaseEntityWrapper {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2113501935479168505L;
+
 	private Integer anno;
 	private Integer numero;
 	private String oggetto;
 	private EntityCodificaWrapper sac;
 	private EntityCodificaWrapper tipo;
 	private EntityCodificaWrapper stato;
+	private Boolean bloccoRagioneria;
+
 
 	public Integer getAnno() {
 		return anno;
@@ -63,5 +63,13 @@ public class SiacTAttoAmmWrapper extends BaseEntityWrapper {
 
 	public void setStato(EntityCodificaWrapper stato) {
 		this.stato = stato;
+	}
+
+	public Boolean getBloccoRagioneria() {
+		return bloccoRagioneria;
+	}
+
+	public void setBloccoRagioneria(Boolean bloccoRagioneria) {
+		this.bloccoRagioneria = bloccoRagioneria;
 	}
 }

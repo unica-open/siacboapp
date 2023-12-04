@@ -63,7 +63,5 @@ public class SiacTBilElemDaoImpl extends BoBaseDaoImpl<SiacTBilElem> implements 
 		
 		return createQuery(jpql.toString(), params).getResultList();
 	}
-	
-	
 
 }

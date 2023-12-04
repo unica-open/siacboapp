@@ -57,8 +57,9 @@ SPDX-License-Identifier: EUPL-1.2
 
 						<s:hidden name="decodifica.uid" />
 						<s:hidden name="decodifica.tabella.id" />
-
-						 <s:iterator id="col" value="decodifica.tabella.columns"> 
+						 
+						 <!-- SIAC-8699 id > var -->
+						 <s:iterator var="col" value="decodifica.tabella.columns"> 
 						
 							<s:if test="#col.visible">
 							
@@ -102,12 +103,14 @@ SPDX-License-Identifier: EUPL-1.2
 							<a class="btn btn-secondary"
 								href="/siacboapp/homeUtenti.do" class="btn">indietro</a>
 
-							<span class="pull-right"> <s:if test="decodifica.uid == null">
-									<s:submit cssClass="btn btn-primary" method="create"
-										value="inserisci decodifica" />
-								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
-										value="aggiorna" />
+							<span class="pull-right"> 
+								<s:if test="decodifica.uid == null">
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="messaggioInformativo_create" value="inserisci decodifica" />
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="messaggioInformativo_update" value="aggiorna" />
 								</s:else>
 							</span>
 

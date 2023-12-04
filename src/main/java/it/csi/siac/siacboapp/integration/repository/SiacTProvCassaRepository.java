@@ -8,18 +8,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacTProvCassa;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacTProvCassaRepository extends JpaRepository<SiacTProvCassa, Integer> {
 
 	@Query("SELECT pc FROM SiacTProvCassa pc "

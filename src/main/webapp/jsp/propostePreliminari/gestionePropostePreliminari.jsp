@@ -164,8 +164,9 @@ SPDX-License-Identifier: EUPL-1.2
 			  <a class="btn btn-secondary" href="<s:property value="#urlCruscotto" />">indietro</a>   
 			  <a class="btn btn-secondary" href="gestionePropostePreliminari<s:property value="capitalize(tipoProposta)" />.do">annulla</a>
 			  
-			  <s:submit cssClass="btn btn-primary pull-right" method="prosegui" value="prosegui" />
-
+			  <!-- SIAC-8699 -->
+			  <!--<s:submit cssClass="btn btn-primary pull-right" method="prosegui" value="prosegui" />-->
+			<s:submit cssClass="btn btn-primary pull-right" action="gestionePropostePreliminari_prosegui" value="prosegui" />			
 		  </p>
           
 		  </s:form>     	

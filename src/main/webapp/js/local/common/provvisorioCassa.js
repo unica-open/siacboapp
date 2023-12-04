@@ -45,8 +45,8 @@ $(function()
                     {aTargets: [4], mData : 'dataEmissioneStr'},
                     {aTargets: [5], mData : 'causale'},
                     {aTargets: [6], mData : 'descrizioneSoggetto'},
-                    {aTargets: [7], mData : function(src) { return floatToImporto(src.importo); }, sClass: 'importo'},
-                    {aTargets: [8], mData : function(src) { return floatToImporto(src.importoDaRegolarizzare); }, sClass: 'importoDaRegolarizzare'}
+                    {aTargets: [7], mData : function(src) { return floatToImporto(src.importo); }, sClass: 'importo text-center'},
+                    {aTargets: [8], mData : function(src) { return floatToImporto(src.importoDaRegolarizzare); }, sClass: 'importoDaRegolarizzare text-center'}
                 ]
         };
         if($.fn.DataTable.fnIsDataTable(dt[0])) {

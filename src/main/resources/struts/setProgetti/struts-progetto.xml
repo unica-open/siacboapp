@@ -24,8 +24,25 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="setProgettiId">${setProgettiId}</param>
 			</result>
 		</action>
-
-	
+		
+		<!-- SIAC-8699 -->
+		<action name="progetto_update"  class="progettoAction" method="update">
+			<result name="success" >/jsp/setProgetti/progetto/progetto.jsp</result>
+			<result name="input" >/jsp/setProgetti/progetto/progetto.jsp</result>
+			<result name="elencoProgetti" type="redirectAction">
+				<param name="actionName">elencoProgetti</param>
+				<param name="setProgettiId">${setProgettiId}</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="progetto_delete"  class="progettoAction" method="delete">
+			<result name="success" >/jsp/setProgetti/progetto/progetto.jsp</result>
+			<result name="input" >/jsp/setProgetti/progetto/progetto.jsp</result>
+			<result name="elencoProgetti" type="redirectAction">
+				<param name="actionName">elencoProgetti</param>
+				<param name="setProgettiId">${setProgettiId}</param>
+			</result>
+		</action>
 		
 	</package>
 	

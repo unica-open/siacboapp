@@ -172,7 +172,8 @@ td.value input {
 							<s:hidden name="serializedValues" id="serializedValues"/>
 							
 							<span class="pull-right"> 
-									<s:submit cssClass="btn btn-primary" method="update" id="update"
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="confIndicatoriSinteticiMissione13_update" id="update"
 										value="aggiorna" />
 							</span>
 

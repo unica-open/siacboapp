@@ -50,6 +50,10 @@ public class SiacTAttoAmm extends SiacTEnteBase {
 	@OneToMany(mappedBy="attoAmministrativo")
 	private List<SiacRAttoAmmStato> stati;
 	
+	@Column(name="attoamm_blocco")
+	private Boolean bloccoRagioneria;
+
+
 	@Override
 	public Integer getUid() {
 		return uid;
@@ -114,5 +118,13 @@ public class SiacTAttoAmm extends SiacTEnteBase {
 	
 	public SiacDAttoAmmStato getStato() {
 		return stati != null && ! stati.isEmpty() ? stati.iterator().next().getStato() : null;
+	}
+
+	public Boolean getBloccoRagioneria() {
+		return bloccoRagioneria;
+	}
+
+	public void setBloccoRagioneria(Boolean bloccoRagioneria) {
+		this.bloccoRagioneria = bloccoRagioneria;
 	}
 }

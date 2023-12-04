@@ -69,14 +69,9 @@ public class SetProgettiAction extends GenericBoAction<SetProgettiModel> {
 	}
 
 	public String delete() {
-		int enteId = sessionHandler.getEnte().getUid();
-
-		model.setSetProgetti(setProgettiService.read(uid, enteId));
-
-		model.getSetProgetti().setDataCancellazione(new Date());
-
-		setProgettiService.update(model.getSetProgetti());
-
+		
+		setProgettiService.elimina(uid, sessionHandler.getRichiedente().getOperatore().getCodiceFiscale());
+		
 		return "elencoSetProgetti";
 	}
 	

@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.csi.siac.siacboapp.integration.dad.CapitoloDad;
 import it.csi.siac.siacboapp.integration.dao.capitolo.SiacTBilElemDetDao;
 import it.csi.siac.siacboapp.integration.entity.SiacDBilElemDetTipo;
 import it.csi.siac.siacboapp.integration.entity.SiacTBilElem;
@@ -22,11 +23,16 @@ import it.csi.siac.siacboapp.integration.entity.SiacTBilElemDet;
 import it.csi.siac.siacboapp.integration.repository.SiacDBilElemDetTipoRepository;
 import it.csi.siac.siacboapp.integration.repository.SiacTBilElemDetRepository;
 import it.csi.siac.siacboapp.integration.repository.SiacTBilElemRepository;
+import it.csi.siac.siacboapp.util.entitywrapper.SiacTBilElemWrapper;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Transactional
 public class CapitoloService {
+	
+	@Autowired
+	private CapitoloDad capitoloDad;
+	
 	@Autowired
 	private SiacTBilElemRepository siacTBilElemRepository;
 
@@ -56,6 +62,12 @@ public class CapitoloService {
 	public SiacTBilElem readCapitolo(Integer uid) {
 		return siacTBilElemRepository.findOne(uid);
 	}
+
+	//SIAC-7639
+	public List<SiacTBilElemWrapper> readCapitoloByOrdinativoUid(Integer uidOrdinativo, Integer enteProprietarioId) {
+		return capitoloDad.ricercaCapitoloByOrdinativoUid(uidOrdinativo, enteProprietarioId);
+	}
+	//
 
 	public void updateImportoCapitolo(SiacTBilElemDet importoCapitolo) {
 		if (importoCapitolo.getUid() == null)

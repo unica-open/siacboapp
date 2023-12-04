@@ -326,7 +326,7 @@ Nessuna proposta preliminare presente
 	  <div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">no, indietro</button>
 		<button class="btn btn-primary conferma-azione" data-dismiss="modal" aria-hidden="true">si, prosegui</button>
-		<a  class="anchor-azione" href='<s:url method="eliminaProposta" />?puid=0'><span class="hide"></span></a>
+		<a  class="anchor-azione" href='<s:url action="%{'elencoPropostePreliminari' + capitalize(tipoProposta) +'_eliminaProposta'}" />?puid=0'><span class="hide"></span></a>
 	  </div>
 	</div>  
 <!-- end modal  --> 
@@ -344,7 +344,7 @@ Nessuna proposta preliminare presente
 	  <div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">no, indietro</button>
 		<button class="btn btn-primary conferma-azione" data-dismiss="modal" aria-hidden="true">si, prosegui</button>
-		<a  class="anchor-azione" href='<s:url method="inviaProposta" />?puid=0'><span class="hide"></span></a>
+		<a  class="anchor-azione" href='<s:url action="%{'elencoPropostePreliminari' + capitalize(tipoProposta) +'_inviaProposta'}" />?puid=0'><span class="hide"></span></a>
 	  </div>
 	</div>  
 <!-- end modal  --> 
@@ -363,7 +363,8 @@ Nessuna proposta preliminare presente
 	  <div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">no, indietro</button>
 		<button class="btn btn-primary conferma-azione" data-dismiss="modal" aria-hidden="true">si, prosegui</button>
-		<a  class="anchor-azione" href='<s:url method="approvaProposta" />?puid=0'><span class="hide"></span></a>
+		<!-- <a  class="anchor-azione" href='<s:url method="approvaProposta" />?puid=0'><span class="hide"></span></a>-->
+		<a  class="anchor-azione" href='<s:url action="%{'elencoPropostePreliminari' + capitalize(tipoProposta) +'_approvaProposta'}" />?puid=0'><span class="hide"></span></a>
 	  </div>
 	</div>  
 <!-- end modal  --> 

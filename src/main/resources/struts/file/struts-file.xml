@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="file" extends="default" namespace="/">
+
+		<action name="uploadFile" class="uploadFileAction">
+			<result name="success">/jsp/file/uploadFile.jsp</result>
+			<result name="input">/jsp/file/uploadFile.jsp</result>
+
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="uploadFile_upload" class="uploadFileAction" method="upload">
+			<result name="success">/jsp/file/uploadFile.jsp</result>
+			<result name="input">/jsp/file/uploadFile.jsp</result>
+
+		</action>
+
+		<action name="ricercaFile" class="ricercaFileAction">
+			<result name="success">/jsp/file/ricercaFile.jsp</result>
+			<result name="input">/jsp/file/ricercaFile.jsp</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="ricercaFile_cerca" class="ricercaFileAction" method="cerca">
+			<result name="success">/jsp/file/ricercaFile.jsp</result>
+			<result name="input">/jsp/file/ricercaFile.jsp</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<action name="risultatiRicercaFile" class="risultatiRicercaFileAction">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+
+		<!-- SIAC-8699 -->
+		<action name="risultatiRicercaFile_annulla" class="risultatiRicercaFileAction" method="annulla">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>		
+		
+		<!-- SIAC-8699 -->
+		<action name="risultatiRicercaFile_elabora" class="risultatiRicercaFileAction" method="elabora">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="risultatiRicercaFile_azioneTipoFile" class="risultatiRicercaFileAction" method="azioneTipoFile">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="risultatiRicercaFile_estrazioneUpload" class="risultatiRicercaFileAction" method="estrazioneUpload">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		
+		<!-- SIAC-8699 -->
+		<action name="risultatiRicercaFile_download" class="risultatiRicercaFileAction" method="download">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="downloadFile" type="chain">
+				<param name="actionName">downloadFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="risultatiRicercaFile" type="redirectAction">
+				<param name="actionName">risultatiRicercaFile</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<action name="downloadFile" class="downloadFileAction">
+			<result name="success" type="stream">
+				<param name="contentType">${contentType}</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		
+		<!-- task-183 -->
+		<action name="risultatiRicercaFile_cerca"  class="risultatiRicercaFileAction" method="cerca">
+			<result name="success">/jsp/file/risultatiRicercaFile.jsp</result>
+			<result name="input">/jsp/file/risultatiRicercaFile.jsp</result>
+		</action>
+
+
+	</package>
+
+
+
+</struts>

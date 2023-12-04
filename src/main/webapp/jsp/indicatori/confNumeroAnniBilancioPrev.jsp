@@ -57,8 +57,9 @@ SPDX-License-Identifier: EUPL-1.2
 
 						<s:hidden name="decodifica.uid" />
 						<s:hidden name="decodifica.tabella.id" />
-
-						 <s:iterator id="col" value="decodifica.tabella.columns"> 
+						
+						 <!-- SIAC-8699 id > var -->	
+						 <s:iterator var="col" value="decodifica.tabella.columns"> 
 						
 							<s:if test="#col.visible">
 							
@@ -104,7 +105,8 @@ SPDX-License-Identifier: EUPL-1.2
 
 						<s:if test="decodifica.uid != null">
 							<span class="pull-right"> 
-									<s:submit cssClass="btn btn-primary" method="update"
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="confNumeroAnniBilancioPrev_update"
 										value="aggiorna" />
 							</span>
 						</s:if>

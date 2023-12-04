@@ -7,18 +7,15 @@ package it.csi.siac.siacboapp.integration.repository;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacTOrdinativo;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacTOrdinativoRepository extends JpaRepository<SiacTOrdinativo, Integer> {
 	
 	@Modifying
@@ -37,4 +34,5 @@ public interface SiacTOrdinativoRepository extends JpaRepository<SiacTOrdinativo
 			+ " WHERE o.uid=:idOrdinativo "
 			+ " AND otsd.tipo.codice='A'")
 	BigDecimal readImportoOrdinativo(@Param("idOrdinativo") Integer idOrdinativo);
+
 }

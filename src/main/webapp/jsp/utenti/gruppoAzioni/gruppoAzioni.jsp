@@ -92,12 +92,15 @@ SPDX-License-Identifier: EUPL-1.2
 							<a class="btn btn-secondary"
 								href="/siacboapp/gruppoAzioni/elencoGruppiAzioni.do" class="btn">indietro</a>
 
-							<span class="pull-right"> <s:if
-									test="gruppoAzioni == null">
-									<s:submit cssClass="btn btn-primary"  cssClass="btn btn-secondary" method="create"
+							<span class="pull-right"> 
+								<s:if test="gruppoAzioni == null">
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary"  cssClass="btn btn-secondary" action="gruppoAzioni_create"
 										value="inserisci gruppo azioni" />
-								</s:if> <s:else>
-									<s:submit  cssClass="btn btn-primary" cssClass="btn btn-primary" method="update"
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit  cssClass="btn btn-primary" cssClass="btn btn-primary" action="gruppoAzioni_update"
 										value="aggiorna gruppo azioni" />
 								</s:else>
 							</span>

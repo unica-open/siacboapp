@@ -14,19 +14,26 @@ import it.csi.siac.siacboapp.integration.entity.SiacTAttoAmm;
 
 public interface SiacTAttoAmmRepository extends JpaRepository<SiacTAttoAmm, Integer> {
 
-	@Query("SELECT aa FROM SiacTAttoAmm aa "
+	@Query("SELECT DISTINCT aa FROM SiacTAttoAmm aa "
 			+ " LEFT OUTER JOIN aa.stati s "
 			+ " 	WITH s.enteProprietario.uid = :enteProprietarioId "
 			+ " 	AND s.dataCancellazione IS NULL "
 			+ " 	AND s.dataInizioValidita < CURRENT_TIMESTAMP "
 			+ " 	AND (s.dataFineValidita IS NULL OR s.dataFineValidita > CURRENT_TIMESTAMP) "
+			+ " LEFT OUTER JOIN FETCH aa.elencoSac es "
 			+ " WHERE aa.enteProprietario.uid = :enteProprietarioId "
 			+ " AND aa.anno=CAST(:anno AS string) "
 			+ " AND (:numero IS NULL OR aa.numero=CAST(CAST(:numero AS string) AS integer)) "
 			+ " AND (:idTipo IS NULL OR aa.tipo.uid=CAST(CAST(:idTipo AS string) AS integer)) "
-			+ " AND (:idSac IS NULL OR EXISTS ("
-			+ "								SELECT 1 FROM aa.elencoSac s WHERE s.sac.uid = CAST(CAST(:idSac AS string) AS integer)) "
-			+ " ) "
+//			+ " AND (:idSac IS NULL OR EXISTS ("
+//			+ "								SELECT 1 FROM aa.elencoSac s WHERE s.sac.uid = CAST(CAST(:idSac AS string) AS integer)      and s.dataCancellazione is NULL                   ) "
+//			+ " ) "
+
+			+ " AND (:idSac IS NULL OR es.sac.uid = CAST(CAST(:idSac AS string) AS integer)) "
+			+ "		 AND es.dataCancellazione IS NULL "
+			+ " 	 AND es.dataInizioValidita < CURRENT_TIMESTAMP "
+			+ " 	 AND (es.dataFineValidita IS NULL OR es.dataFineValidita > CURRENT_TIMESTAMP) "
+
 			+ " AND (COALESCE(:oggetto, '')='' OR UPPER(aa.oggetto) LIKE UPPER('%' || CAST(:oggetto AS text) || '%')) "
 			+ " AND aa.dataCancellazione IS NULL "
 			+ " AND aa.dataInizioValidita < CURRENT_TIMESTAMP "
@@ -39,4 +46,23 @@ public interface SiacTAttoAmmRepository extends JpaRepository<SiacTAttoAmm, Inte
 			@Param("idTipo") Integer idTipo,
 			@Param("idSac") Integer idSac,
 			@Param("oggetto") String oggetto);
+	
+	
+	@Query(value = "SELECT fnc_siac_bko_modifica_modpag_atto_amm( "
+			+ ":idEnte, "
+			+ ":idBilancio, "
+			+ ":idAttoAmministrativo, "
+			+ ":codiceSoggetto, "
+			+ ":idModalitaPagamentoSoggetto, "
+			+ ":loginOperazione"
+			+ ")", nativeQuery = true)
+	String modificaModalitaPagamentoAttoAmministrativo(
+		@Param("idEnte") int idEnte, 
+		@Param("idBilancio") int idBilancio, 
+		@Param("idAttoAmministrativo") Integer idAttoAmministrativo, 
+		@Param("codiceSoggetto") String codiceSoggetto,
+		@Param("idModalitaPagamentoSoggetto") Integer idModalitaPagamentoSoggetto,
+		@Param("loginOperazione") String loginOperazione
+	);
 }
+

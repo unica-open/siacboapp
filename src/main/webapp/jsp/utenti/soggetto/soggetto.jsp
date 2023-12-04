@@ -122,14 +122,15 @@ SPDX-License-Identifier: EUPL-1.2
 
 						<p>
 
-							<a class="btn btn-secondary"
-								href="/siacboapp/soggetto/elencoSoggetti.do">indietro</a> <span
-								class="pull-right"> <s:if test="soggetto == null">
-									<s:submit cssClass="btn btn-primary" method="create"
-										value="inserisci soggetto" />
-								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
-										value="aggiorna soggetto" />
+							<a class="btn btn-secondary" href="/siacboapp/soggetto/elencoSoggetti.do">indietro</a> 
+							<span class="pull-right"> 
+								<s:if test="soggetto == null">
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="soggetto_create" value="inserisci soggetto" />
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="soggetto_update" value="aggiorna soggetto" />
 								</s:else>
 							</span>
 						</p>

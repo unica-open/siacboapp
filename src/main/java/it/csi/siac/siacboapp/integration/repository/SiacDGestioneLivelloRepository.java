@@ -4,17 +4,14 @@
 */
 package it.csi.siac.siacboapp.integration.repository;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacDGestioneLivello;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacDGestioneLivelloRepository extends JpaRepository<SiacDGestioneLivello, Integer> {
 	@Query("SELECT gl FROM SiacDGestioneLivello gl "
 			+ " WHERE gl.enteProprietario.uid=:idEnte "

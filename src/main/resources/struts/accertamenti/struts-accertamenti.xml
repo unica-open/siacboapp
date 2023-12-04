@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="accertamenti" extends="default" namespace="/">
+
+		<action name="eliminaSoggettoCollegatoAccertamento" class="eliminaSoggettoCollegatoAccertamentoAction">
+			<result name="success">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+			<result name="input">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="eliminaSoggettoCollegatoAccertamento_cerca" class="eliminaSoggettoCollegatoAccertamentoAction" method="cerca">
+			<result name="success">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+			<result name="input">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+		</action>
+		<action name="eliminaSoggettoCollegatoAccertamento_aggiornaSoggettoCollegato" class="eliminaSoggettoCollegatoAccertamentoAction" method="aggiornaSoggettoCollegato">
+			<result name="success">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+			<result name="input">/jsp/accertamenti/eliminaSoggettoCollegatoAccertamento.jsp</result>
+		</action>
+		
+		<!-- task-134 -->
+		<action name="aggiornaAccertamentoConBloccoRagioneria" class="aggiornaAccertamentoConBloccoRagioneriaAction">
+			<result name="success">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+		</action>
+	
+		<action name="aggiornaAccertamentoConBloccoRagioneria_cerca" class="aggiornaAccertamentoConBloccoRagioneriaAction" method="cerca">
+			<result name="success">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+		</action>
+		
+		<action name="aggiornaAccertamentoConBloccoRagioneria_aggiornaTutto" class="aggiornaAccertamentoConBloccoRagioneriaAction" method="aggiornaTutto">
+			<result name="success">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/accertamenti/aggiornaAccertamentoConBloccoRagioneria.jsp</result>
+		</action>
+		
+	</package>
+</struts>

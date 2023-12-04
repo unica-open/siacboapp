@@ -12,6 +12,9 @@ SPDX-License-Identifier: EUPL-1.2
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 	<constant name="struts.mapper.action.prefix.enabled" value="true"/>
 	<constant name="struts.mapper.action.prefix.crossNamespaces" value="true"/>
+	
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
 
 	<!-- FIXME Ho copiato qui 3 tipologie di gestione degli errori che facevamo 
 		su DMAWA, che possiamo anche riusare in SIAC -->
@@ -36,11 +39,16 @@ SPDX-License-Identifier: EUPL-1.2
 				</interceptor-ref>
 
 
+				<interceptor-ref name="logInterceptor" />
 
 				<interceptor-ref name="prepare" />
 				<interceptor-ref name="chain" />
 
-				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="fileUpload" >
+<!--                     <param name="maximumSize">20971520</param> -->
+<!--                     <param name="fileUpload.maximumSize">20971520</param> -->
+<!--                    <param name="struts.multipart.maxSize">20971520</param>          -->
+				</interceptor-ref>
 				<interceptor-ref name="checkbox" />
 				<interceptor-ref name="multiselect" />
 
@@ -63,10 +71,6 @@ SPDX-License-Identifier: EUPL-1.2
 					<param name="excludeMethods">execute</param>
 				</interceptor-ref>
 				<interceptor-ref name="debugging" />
-
-
-
-				<interceptor-ref name="logInterceptor" />
 			</interceptor-stack>
 
 		</interceptors>
@@ -127,7 +131,7 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="method">execute</param>
 			</result>
 
-		<result name="OP-BKOF004-setProgetti" type="redirectAction">
+			<result name="OP-BKOF004-setProgetti" type="redirectAction">
 				<param name="actionName">elencoSetProgetti</param>
 				<param name="namespace">/</param>
 				<param name="method">execute</param>
@@ -181,6 +185,20 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="method">execute</param>
 			</result>
 
+			<!-- SIAC-7641 -->
+			<result name="OP-BKOF014-annullaAttivazioniContabili" type="redirectAction">
+				<param name="actionName">annullaAttivazioniContabili</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			
+			<!-- SIAC-7639 -->
+			<result name="OP-BKOF013-OrdinativoModificaPianoDeiConti" type="redirectAction">
+				<param name="actionName">modificaPianoDeiContiOrdinativo</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
 			<result name="OP-GESC-importiReport" type="redirectAction">
 				<param name="actionName">elencoImportiReport</param>
 				<param name="namespace">/</param>
@@ -198,6 +216,44 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="namespace">/</param>
 				<param name="method">execute</param>
 			</result>
+
+			<result name="OP-BKOF015-eliminaSoggettoCollegatoImpegno" type="redirectAction">
+				<param name="actionName">eliminaSoggettoCollegatoImpegno</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
+			<result name="OP-BKOF016-aggiornaImpegnoConBloccoRagioneria" type="redirectAction">
+				<param name="actionName">aggiornaImpegnoConBloccoRagioneria</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			
+			<result name="OP-BKOF017-definisciVariazioneSenzaBonita" type="redirectAction">
+				<param name="actionName">definisciVariazioneSenzaBonita</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			
+			<result name="OP-BKOF018-modificaModalitaPagamentoAttoAllegato" type="redirectAction">
+				<param name="actionName">modificaModalitaPagamentoAttoAllegato</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			
+			<result name="OP-BKOF019-eliminaSoggettoCollegatoAccertamento" type="redirectAction">
+				<param name="actionName">eliminaSoggettoCollegatoAccertamento</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			
+			<!-- task-134 -->
+			<result name="OP-BKOF020-aggiornaAccertamentoConBloccoRagioneria" type="redirectAction">
+				<param name="actionName">aggiornaAccertamentoConBloccoRagioneria</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+
 
 		</action>
 

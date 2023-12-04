@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import it.csi.siac.siaccommon.util.CoreUtils;
+import it.csi.siac.siaccommon.util.CoreUtil;
 
 /**
  * The persistent class for the siac_t_gruppo database table.
@@ -151,7 +151,7 @@ public class SiacTGruppo extends SiacTEnteBase {
 		ruoliOp = new HashSet<SiacRGruppoRuoloOp>();
 
 		for (Integer classificatoreId : classificatoriId) {
-			SiacRGruppoRuoloOp gropClone = CoreUtils.dupObject(grop);
+			SiacRGruppoRuoloOp gropClone = CoreUtil.dupObject(grop);
 			gropClone.setClassificatore(new SiacTClass(classificatoreId));
 
 			ruoliOp.add(gropClone);

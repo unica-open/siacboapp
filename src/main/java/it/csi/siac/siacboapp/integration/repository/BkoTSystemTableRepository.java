@@ -19,6 +19,10 @@ public interface BkoTSystemTableRepository extends JpaRepository<BkoTSystemTable
 	@Query("SELECT st FROM BkoTSystemTable st WHERE st.type.code=:type ORDER BY name")
 	List<BkoTSystemTable> getTablesByType(@Param("type") String type);
 
+	//SIAC-8092 si adegua la ricerca al filtro per le tabelle usate con relazioni ad altre tabelle
+	@Query("SELECT st FROM BkoTSystemTable st join st.columns sc WHERE st.type.code=:type and sc.label=:column ORDER BY st.name")
+	List<BkoTSystemTable> getTablesByTypeAndColumnName(@Param("type") String type, @Param("column") String column);
+
 	@Query("SELECT st FROM BkoTSystemTable st where id=:id")
 	BkoTSystemTable getTable(@Param("id") Integer id);
 

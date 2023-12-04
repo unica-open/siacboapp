@@ -182,13 +182,13 @@ SPDX-License-Identifier: EUPL-1.2
 							<span class="pull-right"> 
 								
 								<s:if test="proposta.uid == null">
-									<s:submit cssClass="btn btn-primary editPropostaPreliminare" method="create"
+									<s:submit cssClass="btn btn-primary editPropostaPreliminare" action='propostaPreliminare<s:property value="capitalize(tipoProposta)"_create'
 										value="inserisci proposta" />
 								</s:if> <s:else>
 								
 								
 									<s:if test="proposta.stato.codice != 'APPROVATA'" > 
-									<s:submit cssClass="btn btn-primary editPropostaPreliminare" method="update" 
+									<s:submit cssClass="btn btn-primary editPropostaPreliminare" action='propostaPreliminare<s:property value="capitalize(tipoProposta)"_update' 
 										value="aggiorna proposta" />
 										</s:if>
 								</s:else>

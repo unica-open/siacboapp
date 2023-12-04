@@ -26,7 +26,7 @@ import it.csi.siac.siacboapp.integration.repository.SiacDGestioneLivelloReposito
 import it.csi.siac.siacboapp.integration.repository.SiacTConfIndicatoriEntrataRepository;
 import it.csi.siac.siacboapp.integration.repository.SiacTConfIndicatoriSintRepository;
 import it.csi.siac.siacboapp.integration.repository.SiacTConfIndicatoriSpesaRepository;
-import it.csi.siac.siaccommon.util.number.NumberUtils;
+import it.csi.siac.siaccommon.util.number.NumberUtil;
 import it.csi.siac.siaccorser.model.TipologiaGestioneLivelli;
 
 @Component
@@ -86,7 +86,7 @@ public class IndicatoriService extends BoService {
 				fields.add(valueFields[Integer.parseInt(tmp[0])]);
 				
 				String value = tmp.length > 1 ? tmp[1] : null;
-				values.add(NumberUtils.decimalToBigDecimal(value));
+				values.add(NumberUtil.decimalToBigDecimal(value));
 			}
 			
 			siacTConfIndicatoriDao.updateIndicatori(entity, ind.getKey(), fields, values);

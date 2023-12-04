@@ -134,10 +134,10 @@ SPDX-License-Identifier: EUPL-1.2
 
 							<span class="pull-right"> <s:if
 									test="accountEntity == null">
-									<s:submit cssClass="btn btn-primary" method="create"
+									<s:submit cssClass="btn btn-primary" action="setProgetti_create"
 										value="inserisci set" />
 								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
+									<s:submit cssClass="btn btn-primary" action="setProgetti_update"
 										value="aggiorna set" />
 								</s:else>
 							</span>

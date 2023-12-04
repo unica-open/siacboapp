@@ -34,7 +34,6 @@ SPDX-License-Identifier: EUPL-1.2
         </action>
 	
 
-
 	    <action name="ricercaProvvisoriCassaJson" class="ricercaProvvisoriCassaAction">
             <result name="success" type="json">
                 <param name="ignoreHierarchy">false</param>
@@ -46,9 +45,103 @@ SPDX-License-Identifier: EUPL-1.2
                 </param>
             </result>
         </action>
-	
 
 
+	    <action name="ricercaOrdinativoJson" class="ricercaOrdinativoAction">
+            <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*,
+                    elencoOrdinativi.*,
+                    capitoloAssociato.*,
+                    listaCategorieMacroAggregati.*,
+                    classificatori.*,
+                    classificatoriWrapper.*,
+                    tipologie.*,
+                    titoli.*
+                </param>
+            </result>
+        </action>
+
+
+	    <action name="ricercaClassificatoriByParentJson" class="ricercaOrdinativoAction" method="ricercaClassificatoriByParentJson">
+            <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*,
+                    classificatori.*
+                </param>
+            </result>
+        </action>
+
+
+	    <action name="cercaPianoDeiContiJson" class="ricercaOrdinativoAction" method="cercaPianoDeiContiJson">
+            <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*,
+                    classificatoriWrapper.*
+                </param>
+            </result>
+        </action>
+
+
+	    <action name="ricercaEventoModificaPianoDeiConti" class="ricercaOrdinativoAction" method="ricercaEventoModificaPianoDeiConti">
+            <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*,
+                    eventi.*
+                </param>
+            </result>
+        </action>
+
+
+		<action name="modificaPianoDeiContiOrdinativo_controlliFormali" class="backofficeModificaPianoDeiContiOrdinativoAction" method="controlliFormaliModificaPianoDeiContiOrdinativo">
+			 <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*
+                </param>
+            </result>
+		</action>
+
+		<!-- SIAC-7615 
+		<action name="consultaFlusso_cerca" class="consultaFlussoAction" method="cerca">
+			 <result name="success" type="json">
+                <param name="ignoreHierarchy">false</param>
+                <param name="includeProperties">
+                    errori.*,
+                    messaggi.*,
+                    informazioni.*,
+                    elencoOrdinativi.*
+                </param>
+            </result>
+		</action>
+		-->
+		
+		<!-- SIAC-8485 -->
+		<action name="modificaModalitaPagamentoAttoAllegato_caricaStrutture" class="modificaModalitaPagamentoAttoAllegatoAction" method="cercaStruttureAmministrativoContabili">
+			<result name="success" type="json">
+            	<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					errori.*,
+					messaggi.*,
+                    informazioni.*,
+					elencoStruttureAmministrativoContabili.*
+				</param>
+			</result>
+		</action>
 
 	</package>
 </struts>

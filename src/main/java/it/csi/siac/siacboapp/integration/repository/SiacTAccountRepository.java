@@ -6,17 +6,14 @@ package it.csi.siac.siacboapp.integration.repository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacTAccount;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacTAccountRepository extends JpaRepository<SiacTAccount, Integer> {
 	@Query("SELECT a FROM SiacTAccount a "
 			+ " WHERE a.enteProprietario.uid=:enteId AND a.dataCancellazione IS NULL")
@@ -29,5 +26,12 @@ public interface SiacTAccountRepository extends JpaRepository<SiacTAccount, Inte
 			+ " WHERE a.enteProprietario.uid=:enteId AND a.dataCancellazione IS NULL "
 			+ " AND a.uid=:uid")
 	SiacTAccount findOne(@Param("uid") Integer uid, @Param("enteId") int enteId);
+
+	
+	@Query("SELECT a FROM SiacTAccount a " 
+			+ " WHERE a.enteProprietario.uid=:idEnte "
+			+ " AND a.codice=:codice "
+			+ " AND a.dataCancellazione IS NULL ")
+	List<SiacTAccount> findByCodiceAccountEnte(@Param("idEnte") Integer idEnte, @Param("codice") String codice);
 
 }

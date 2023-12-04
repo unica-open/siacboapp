@@ -7,7 +7,7 @@ SPDX-License-Identifier: EUPL-1.2
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:set name="urlCruscotto" 
+<s:set var="urlCruscotto" 
 	value="%{'/siacboapp/redirectToCruscotto.do'}" /> 
 
 <%-- Gestione della navigazione --%>

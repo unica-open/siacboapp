@@ -20,14 +20,38 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="success" >/jsp/utenti/decodifica/decodifica.jsp</result>
 			<result name="elencoDecodifiche" type="redirectAction">elencoDecodifiche</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="decodifica_create"  class="decodificaAction" method="create" >
+			<result name="success" >/jsp/utenti/decodifica/decodifica.jsp</result>
+			<result name="elencoDecodifiche" type="redirectAction">elencoDecodifiche</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="decodifica_update"  class="decodificaAction" method="update">
+			<result name="success" >/jsp/utenti/decodifica/decodifica.jsp</result>
+			<result name="elencoDecodifiche" type="redirectAction">elencoDecodifiche</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="decodifica_delete"  class="decodificaAction" method="delete">
+			<result name="success" >/jsp/utenti/decodifica/decodifica.jsp</result>
+			<result name="elencoDecodifiche" type="redirectAction">elencoDecodifiche</result>
+		</action>
 		<action name="messaggioInformativo"  class="messaggioInformativoAction" >
 			<result name="success" >/jsp/utenti/decodifica/messaggioInformativo.jsp</result>
 			<result name="homeUtenti" type="redirectAction">homeUtenti</result>
 		</action>
 
-	
-		
+		<!-- SIAC-8699 -->
+		<action name="messaggioInformativo_create"  class="messaggioInformativoAction"  method="create">
+			<result name="success" >/jsp/utenti/decodifica/messaggioInformativo.jsp</result>
+			<result name="homeUtenti" type="redirectAction">homeUtenti</result>
+		</action>
+			
+		<!-- SIAC-8699 -->
+		<action name="messaggioInformativo_update"  class="messaggioInformativoAction"  method="update">
+			<result name="success" >/jsp/utenti/decodifica/messaggioInformativo.jsp</result>
+			<result name="homeUtenti" type="redirectAction">homeUtenti</result>
+		</action>	
 	</package>
 	
 	

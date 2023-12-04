@@ -39,14 +39,10 @@ public class SiacTFpvSetCronop extends SiacTEnteBase {
 	@ManyToOne
 	@JoinColumn(name = "bil_id")
 	private SiacTBil bilancio;
-	
-	@OneToMany(mappedBy="setProgetti", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+
+	@OneToMany(mappedBy = "setProgetti", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	private Set<SiacRFpvSetCronop> programmi;
-	
-	
-	
-	
-	
+
 	public Set<SiacRFpvSetCronop> getProgrammi() {
 		return programmi;
 	}

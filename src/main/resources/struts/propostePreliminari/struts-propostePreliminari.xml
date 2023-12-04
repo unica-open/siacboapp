@@ -14,33 +14,96 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
 			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
 		</action>
+		
+		<!-- SIAC-8699-->
+		<action name="gestionePropostePreliminari_prosegui" class="gestionePropostePreliminariSpesaAction" method="prosegui">
+			<result name="success">/jsp/propostePreliminari/gestionePropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/gestionePropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
 
 		<action name="elencoPropostePreliminariSpesa" class="elencoPropostePreliminariSpesaAction">
 			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
 			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
 			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
 		</action>
-
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariSpesa_approvaProposta" class="elencoPropostePreliminariSpesaAction" method="approvaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariSpesa_eliminaProposta" class="elencoPropostePreliminariSpesaAction" method="eliminaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariSpesa_inviaProposta" class="elencoPropostePreliminariSpesaAction" method="inviaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
 		<action name="elencoPropostePreliminariEntrata" class="elencoPropostePreliminariEntrataAction">
 			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
 			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
 			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
 		</action>
-
-
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariEntrata_approvaProposta" class="elencoPropostePreliminariEntrataAction" method="approvaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariEntrata_eliminaProposta" class="elencoPropostePreliminariEntrataAction" method="eliminaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="elencoPropostePreliminariEntrata_inviaProposta" class="elencoPropostePreliminariEntrataAction" method="inviaProposta">
+			<result name="success">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="input">/jsp/propostePreliminari/elencoPropostePreliminari.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
 		<action name="propostaPreliminareSpesa"  class="propostaPreliminareSpesaAction" >
 			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
 			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
 			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
 		</action>
-
-
+		<!-- SIAC-8699 -->
+		<action name="propostaPreliminareSpesa_create"  class="propostaPreliminareSpesaAction" method="create">
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="propostaPreliminareSpesa_update"  class="propostaPreliminareSpesaAction" method="update">
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariSpesa" type="redirectAction">elencoPropostePreliminariSpesa</result>
+		</action>
+		
 		<action name="propostaPreliminareEntrata"  class="propostaPreliminareEntrataAction" >
 			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
 			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
 			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
 		</action>
-
+		<!-- SIAC-8699 -->
+		<action name="propostaPreliminareEntrata_create"  class="propostaPreliminareEntrataAction" method="create">
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="propostaPreliminareEntrata_update"  class="propostaPreliminareEntrataAction" method="update">
+			<result name="success" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="input" >/jsp/propostePreliminari/propostaPreliminare.jsp</result>
+			<result name="elencoPropostePreliminariEntrata" type="redirectAction">elencoPropostePreliminariEntrata</result>
+		</action>
 
 	
 	</package>

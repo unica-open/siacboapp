@@ -10,8 +10,13 @@ SPDX-License-Identifier: EUPL-1.2
     <include file="struts/common/struts-json.xml" />
     
     <include file="struts/utenti/struts-utenti.xml" />
-    <include file="struts/gestioneFile/struts-gestioneFile.xml" />
-    <include file="struts/gestioneOrdinativi/struts-gestioneOrdinativi.xml" />
+    <include file="struts/file/struts-file.xml" />
+    <include file="struts/ordinativi/struts-ordinativi.xml" />
+    <include file="struts/documenti/struts-documenti.xml" />
+    <include file="struts/impegni/struts-impegni.xml" />
+    <include file="struts/accertamenti/struts-accertamenti.xml" />
+    <include file="struts/provvedimenti/struts-provvedimenti.xml" />
+    <include file="struts/variazioni/struts-variazioni.xml" />
     <include file="struts/limiteImpegnabile/struts-gestioneLimiteImpegnabile.xml" />
     <include file="struts/propostePreliminari/struts-propostePreliminari.xml" />
     <include file="struts/report/struts-report.xml" />

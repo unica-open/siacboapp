@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -18,8 +20,6 @@ import it.csi.siac.siacboapp.frontend.ui.model.common.CriteriRicercaProvvisoriCa
 import it.csi.siac.siacboapp.integration.entity.SiacTProvCassa;
 import it.csi.siac.siacboapp.integration.repository.SiacTProvCassaRepository;
 import it.csi.siac.siacboapp.util.entitywrapper.SiacTProvCassaWrapper;
-import it.csi.siac.siaccommonser.business.service.base.exception.BusinessException;
-import it.csi.siac.siaccorser.model.errore.ErroreCore;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -63,19 +63,10 @@ public class ProvvisorioCassaDad extends BoBaseDad {
 					elencoProvvisoriCassa.add(pcw);
 				}
 			}
-		} catch (RuntimeException e) {
+		} catch (PersistenceException e) {
 			log.error(methodName, e);
 			
-			long elapsed = System.currentTimeMillis() - currentTimeMillis0;
-			
-			log.warn(methodName, "internalRicercaOrdinativi: elapsed " + elapsed);
-			
-			// FIXME !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			if (elapsed > 30000) {
-				throw new BusinessException(ErroreCore.RICERCA_TROPPO_ESTESA.getErrore());
-			}
-			
-			throw e;
+			checkForLongSearch(currentTimeMillis0);
 		}
 		
 		return elencoProvvisoriCassa; 

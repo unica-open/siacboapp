@@ -4,23 +4,19 @@ SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
 SPDX-License-Identifier: EUPL-1.2
 -->
 
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+<web-app
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://JAVA.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0"> 
-	
-	
-	
+	id="WebApp_ID"
+	version="3.0">
+
 	<display-name>Backoffice Application</display-name>
+	<distributable />
 
-	<distributable/> 
-
-	<!-- I file di configurazione di ContextLoaderListener di Spring sono tutti 
-		i file *.xml sotto la cartella spring del classpath. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<!-- escludo momentaneamente datasource.xml, jpa.xml -->
-		<!-- <param-value>classpath:spring/*.xml</param-value> -->
 		<param-value>
 			classpath:spring/*Context.xml
 			classpath:spring/jpa.xml
@@ -39,18 +35,12 @@ SPDX-License-Identifier: EUPL-1.2
 		<param-value>${remincl.cache.time}</param-value>
 	</context-param>
 
-
-
-
-
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-
-
 
 	<filter>
 		<filter-name>Shibboleth filter</filter-name>
@@ -61,28 +51,10 @@ SPDX-License-Identifier: EUPL-1.2
 		</init-param>
 		<init-param>
 			<param-name>NO_CHECK_PAGE</param-name>
-			<param-value>
-              HomePage.do,
-                sessionExpired.do,
-                  fatalError,
-                      notFoundError,
-                            Logout
-           </param-value>
+			<param-value>HomePage.do, sessionExpired.do, fatalError, notFoundError, Logout</param-value>
 		</init-param>
 	</filter>
 
-
-	<!-- == mapping di CAS <filter-mapping> <filter-name>CAS Filter</filter-name> 
-		<url-pattern>/login/*</url-pattern> </filter-mapping> == -->
-
-	<!-- == mapping di Shibboleth <filter-mapping> <filter-name>Shibboleth filter</filter-name> 
-		<url-pattern>*.do</url-pattern> </filter-mapping> == -->
-
-	<!-- == mapping parametrico di CAS o Shibboleth == -->
-	
-	
-	
-	
 	<filter-mapping>
 		<filter-name>${sso.filter.name}</filter-name>
 		<url-pattern>${sso.filter.url.pattern}</url-pattern>
@@ -90,9 +62,7 @@ SPDX-License-Identifier: EUPL-1.2
 
 	<filter>
 		<filter-name>struts2</filter-name>
-		<filter-class>
-			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
-		</filter-class>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
@@ -100,26 +70,15 @@ SPDX-License-Identifier: EUPL-1.2
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 
-
-
-
-
-	<jsp-config>
-	
+	<jsp-config> 
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
 			<page-encoding>UTF-8</page-encoding>
 		</jsp-property-group>
 	</jsp-config>
 
-
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-
-
-
-
-
 
 </web-app>

@@ -20,6 +20,18 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="success" >/jsp/utenti/ruoloOp/ruoloOp.jsp</result>
 			<result name="elencoRuoliOp" type="redirectAction">elencoRuoliOp</result>
 		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="ruoloOp_create"  class="ruoloOpAction" method="create">
+			<result name="success" >/jsp/utenti/ruoloOp/ruoloOp.jsp</result>
+			<result name="elencoRuoliOp" type="redirectAction">elencoRuoliOp</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="ruoloOp_update"  class="ruoloOpAction" method="update">
+			<result name="success" >/jsp/utenti/ruoloOp/ruoloOp.jsp</result>
+			<result name="elencoRuoliOp" type="redirectAction">elencoRuoliOp</result>
+		</action>
 
 		<action name="eliminaRuoloOp" class="eliminaRuoloOpAction">
 			<result name="success" type="redirectAction">elencoRuoliOp</result>

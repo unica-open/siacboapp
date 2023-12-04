@@ -4,6 +4,9 @@
 */
 package it.csi.siac.siacboapp.integration.dad.mapper.base;
 
-public abstract interface EntityWrapperMapper {
-	public void map(Object o, Object ow);
+import it.csi.siac.siacboapp.util.entitywrapper.BaseEntityWrapper;
+import it.csi.siac.siaccommon.util.mapper.Mapper;
+import it.csi.siac.siaccommonser.integration.entity.SiacTBase;
+
+public abstract interface EntityWrapperMapper<O extends SiacTBase, OW extends BaseEntityWrapper> extends Mapper<O, OW> {
 }

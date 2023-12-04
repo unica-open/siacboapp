@@ -20,6 +20,7 @@ import it.csi.siac.siacboapp.integration.entity.SiacDSoggettoClasse;
 import it.csi.siac.siacboapp.integration.entity.SiacTSoggetto;
 import it.csi.siac.siacboapp.integration.repository.SiacDSoggettoClasseRepository;
 import it.csi.siac.siacboapp.integration.repository.SiacTSoggettoRepository;
+import it.csi.siac.siacboapp.util.entitywrapper.SiacTModpagWrapper;
 import it.csi.siac.siacboapp.util.entitywrapper.SiacTSoggettoWrapper;
 
 @Component
@@ -65,5 +66,9 @@ public class SoggettoService extends BoService {
 	
 	public List<SiacTSoggettoWrapper> ricercaSoggetti(Integer idEnte, CriteriRicercaSoggetti criteri) {
 		return soggettoDad.ricercaSoggetti(idEnte, criteri);
+	}
+
+	public List<SiacTModpagWrapper> readElencoModalitaPagamentoSoggetto(int idEnte, String codiceSoggetto) {
+		return soggettoDad.readElencoModalitaPagamentoSoggetto(idEnte, codiceSoggetto);
 	}
 }

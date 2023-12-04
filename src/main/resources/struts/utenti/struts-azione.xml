@@ -14,13 +14,31 @@ SPDX-License-Identifier: EUPL-1.2
 		<action name="elencoAzioni"  class="elencoAzioniAction" >
 			<result name="success" >/jsp/utenti/azione/elencoAzioni.jsp</result>
 		</action>
-	
+		
 			
 		<action name="azione"  class="azioneAction" >
 			<result name="success" >/jsp/utenti/azione/azione.jsp</result>
 			<result name="elencoAzioni" type="redirectAction">elencoAzioni</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="azione_delete"  class="azioneAction" method="delete">
+			<result name="success" >/jsp/utenti/azione/azione.jsp</result>
+			<result name="elencoAzioni" type="redirectAction">elencoAzioni</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="azione_create"  class="azioneAction" method="create">
+			<result name="success" >/jsp/utenti/azione/azione.jsp</result>
+			<result name="elencoAzioni" type="redirectAction">elencoAzioni</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="azione_update"  class="azioneAction" method="update">
+			<result name="success" >/jsp/utenti/azione/azione.jsp</result>
+			<result name="elencoAzioni" type="redirectAction">elencoAzioni</result>
+		</action>
+		
 		<!-- <action name="eliminaAzione" class="eliminaAzioneAction">
 			<result name="success" type="redirectAzione">elencoAzioni</result>
 		</action> -->

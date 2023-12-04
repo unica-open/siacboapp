@@ -37,7 +37,7 @@ public class EliminaAccountAction extends GenericBoAction<AccountModel> {
 
 		model.getAccountEntity().setDataCancellazione(new Date());
 
-		accountService.update(model.getAccountEntity());
+		accountService.update(model.getAccountEntity(), null);
 
 		return SUCCESS;
 	}

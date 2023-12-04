@@ -6,13 +6,9 @@ package it.csi.siac.siacboapp.util.entitywrapper;
 
 public class EntityCodificaWrapper extends BaseEntityWrapper {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4496543383289513835L;
 
 	private String codice;
-	
 	private String descrizione;
 
 	public String getCodice() {

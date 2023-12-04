@@ -6,17 +6,15 @@ package it.csi.siac.siacboapp.integration.repository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacTFpvSetCronop;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacTFpvSetCronopRepository extends JpaRepository<SiacTFpvSetCronop, Integer> {
 	@Query("SELECT x FROM SiacTFpvSetCronop x "
 			+ " WHERE x.enteProprietario.uid=:enteId " +
@@ -28,5 +26,12 @@ public interface SiacTFpvSetCronopRepository extends JpaRepository<SiacTFpvSetCr
 			+ " WHERE s.enteProprietario.uid=:enteId AND s.dataCancellazione IS NULL "
 			+ " AND s.uid=:uid")
 	SiacTFpvSetCronop findOne(@Param("uid") Integer uid, @Param("enteId") int enteId);
+
+	@Modifying
+	@Query("UPDATE SiacTFpvSetCronop SET dataCancellazione=CURRENT_TIMESTAMP, loginOperazione=:loginOperazione WHERE uid=:uid")
+	void cancellaSetProgetti(@Param("uid") Integer uid, @Param("loginOperazione") String loginOperazione);
+	
+	
+	
 
 }

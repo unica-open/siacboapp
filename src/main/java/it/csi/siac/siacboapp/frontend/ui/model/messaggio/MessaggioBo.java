@@ -28,10 +28,7 @@ public enum MessaggioBo implements TipoMessaggio {
 
 	@Override
 	public Messaggio getMessaggio(Object... args) {
-
-		Messaggio errore = new Messaggio(codice, MessageFormat.format(
-				messaggio, args));
-		return errore;
+		return new Messaggio(codice, MessageFormat.format(messaggio, args));
 	}
 
 }

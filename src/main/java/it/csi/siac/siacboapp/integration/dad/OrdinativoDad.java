@@ -4,13 +4,13 @@
 */
 package it.csi.siac.siacboapp.integration.dad;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +18,16 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import it.csi.siac.siacboapp.frontend.ui.model.gestioneordinativi.CriteriRicercaOrdinativi;
+import it.csi.siac.siacboapp.frontend.ui.model.ordinativi.CriteriRicercaOrdinativi;
+import it.csi.siac.siacboapp.frontend.ui.model.ordinativi.backofficeModificaPianoDeiContiOrdinativo.ModificaPianoDeiContiOrdinativo;
 import it.csi.siac.siacboapp.integration.dad.helper.AssociaOrdinativiProvvisoriCassaHelper;
 import it.csi.siac.siacboapp.integration.dad.mapper.SiacTOrdinativoDataAnnullamentoMapper;
-import it.csi.siac.siacboapp.integration.dad.mapper.base.EntityWrapperMapping;
-import it.csi.siac.siacboapp.integration.dao.gestioneordinativi.SiacTOrdinativoDao;
+import it.csi.siac.siacboapp.integration.dad.mapper.base.EntityWrapperMapper;
+import it.csi.siac.siacboapp.integration.dao.ordinativi.SiacTOrdinativoDao;
 import it.csi.siac.siacboapp.integration.entity.SiacTOrdinativo;
 import it.csi.siac.siacboapp.integration.repository.SiacROrdinativoProvCassaRepository;
+import it.csi.siac.siacboapp.integration.repository.SiacTOrdinativoRepository;
 import it.csi.siac.siacboapp.util.entitywrapper.SiacTOrdinativoWrapper;
-import it.csi.siac.siaccommonser.business.service.base.exception.BusinessException;
-import it.csi.siac.siaccorser.model.errore.ErroreCore;
 
 @Component 
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -41,32 +41,28 @@ public class OrdinativoDad extends BoBaseDad {
 	
 	@Autowired
 	protected AssociaOrdinativiProvvisoriCassaHelper associaOrdinativiProvvisoriCassaHelper;
+
+	@Autowired
+	protected SiacTOrdinativoRepository siacTOrdinativoRepository;
 	
 	public List<SiacTOrdinativoWrapper> ricercaOrdinativi(int idEnte, CriteriRicercaOrdinativi criteri, 
-			EntityWrapperMapping... entityWrapperMappings) {
-		final String methodName = "ricercaOrdinativi";
+			Class<? extends EntityWrapperMapper>... mapperTypes) {
+
 		
 		long currentTimeMillis0 = System.currentTimeMillis();
 		
 		try {
-		
+			
 			List<SiacTOrdinativo> elencoOrdinativi = internalRicercaOrdinativi(idEnte, criteri);
 		
 //			if (elencoOrdinativi.size() > 300)
 //				throw new BusinessException(ErroreCore.RICERCA_TROPPO_ESTESA.getErrore());
 
-			return mapToWrapper(elencoOrdinativi, entityWrapperMappings);
+			return mapToWrapper(elencoOrdinativi, mapperTypes);
 		}
 		catch (PersistenceException e) {
 			// FIXME
-			
-			long elapsed = System.currentTimeMillis() - currentTimeMillis0;
-			
-			log.warn(methodName, "internalRicercaOrdinativi: elapsed " + elapsed);
-			
-			if (elapsed > 30000) {
-				throw new BusinessException(ErroreCore.RICERCA_TROPPO_ESTESA.getErrore());
-			}
+			checkForLongSearch(currentTimeMillis0);
 			
 //			handlePersistenceException(e);
 		}
@@ -74,9 +70,63 @@ public class OrdinativoDad extends BoBaseDad {
 		return null;
 	}
 	
+	/**
+	 * SIAC-7615
+	 * 
+	 * @param uid
+	 * @param anno
+	 * @param codiceTipoOrdinativi
+	 * @return
+	 */
+	public List<SiacTOrdinativoWrapper> ricercaOrdinativiDaFlusso(Integer uid, String anno, String codiceTipoOrdinativi, 
+			Class<? extends EntityWrapperMapper>... mapperTypes) {
+		
+		long currentTimeMillis0 = System.currentTimeMillis();
+		
+		try {
+			
+			List<SiacTOrdinativo> elencoOrdinativi = 
+					siacTOrdinativoDao.ricercaOrdinativiDaFlusso(uid, anno, codiceTipoOrdinativi);
+		
+			return mapToWrapper(elencoOrdinativi, mapperTypes);
+		}
+		catch (PersistenceException e) {
+			checkForLongSearch(currentTimeMillis0);
+		}
+		
+		return null;
+	}
+
+	/**
+	 * SIAC-7639
+	 * 
+	 * @param idEnte
+	 * @param criteri
+	 * @param entityWrapperMappings
+	 * @return
+	 */
+	public List<SiacTOrdinativoWrapper> ricercaOrdinativo(int idEnte, CriteriRicercaOrdinativi criteri, 
+			Class<? extends EntityWrapperMapper>... mapperTypes) {
+
+		
+		long currentTimeMillis0 = System.currentTimeMillis();
+		
+		try {
+			
+			List<SiacTOrdinativo> elencoOrdinativi = internalRicercaOrdinativo(idEnte, criteri);
+			
+			return mapToWrapper(elencoOrdinativi, mapperTypes);
+		
+		} catch (PersistenceException e) {
+			checkForLongSearch(currentTimeMillis0);
+		}
+		
+		return null;
+	}
+
 	public List<SiacTOrdinativoWrapper> ricercaOrdinativiSiopePlus(int idEnte, CriteriRicercaOrdinativi criteri, 
-			EntityWrapperMapping... entityWrapperMappings) {
-		final String methodName = "ricercaOrdinativiSiopePlus";
+			Class<? extends EntityWrapperMapper>... mapperTypes) {
+
 
 		long currentTimeMillis0 = System.currentTimeMillis();
 		
@@ -87,18 +137,11 @@ public class OrdinativoDad extends BoBaseDad {
 //			if (elencoOrdinativi.size() > 300)
 //				throw new BusinessException(ErroreCore.RICERCA_TROPPO_ESTESA.getErrore());
 			
-			return mapToWrapper(elencoOrdinativi, entityWrapperMappings);
+			return mapToWrapper(elencoOrdinativi, mapperTypes);
 		}
 		catch (PersistenceException e) {
 			// FIXME
-			long elapsed = System.currentTimeMillis() - currentTimeMillis0;
-			
-			log.warn(methodName, "internalRicercaOrdinativiSiopePlus: elapsed " + elapsed);
-			
-			if (System.currentTimeMillis() - currentTimeMillis0 > 30000) {
-				throw new BusinessException(ErroreCore.RICERCA_TROPPO_ESTESA.getErrore());
-			}
-			
+			checkForLongSearch(currentTimeMillis0);
 			// handlePersistenceException(e);
 		}
 		
@@ -122,27 +165,31 @@ public class OrdinativoDad extends BoBaseDad {
 //		throw e;
 //		*/
 //	}
-
+	
+	
 	public void associaOrdinativiProvvisoriCassa(Integer[] idOrdinativi, Integer[] idProvvisoriCassa, String loginOperazione) {
 			associaOrdinativiProvvisoriCassaHelper.associaOrdinativiProvvisoriCassa(idOrdinativi, idProvvisoriCassa, loginOperazione);
 	}
 
 	private List<SiacTOrdinativoWrapper> mapToWrapper(List<SiacTOrdinativo> elencoOrdinativi,
-			EntityWrapperMapping... entityWrapperMappings) {
+			Class<? extends EntityWrapperMapper>... mapperTypes) {
 		
-		List<SiacTOrdinativoWrapper> elencoOrdinativiWrapper = new ArrayList<SiacTOrdinativoWrapper>();
+		return mapEntityListToWrapperListExt(elencoOrdinativi, SiacTOrdinativoWrapper.class, 
+				SiacTOrdinativoDataAnnullamentoMapper.class, mapperTypes);
 		
-		for (SiacTOrdinativo o : elencoOrdinativi) {
-			
-			SiacTOrdinativoWrapper ow = map(o, SiacTOrdinativoWrapper.class);
-			
-			mapWithMapper(SiacTOrdinativoDataAnnullamentoMapper.class, o, ow);
-			mapEntityToWrapper(o, ow, entityWrapperMappings);
-			
-			elencoOrdinativiWrapper.add(ow);
-		}
-
-		return elencoOrdinativiWrapper;
+//		List<SiacTOrdinativoWrapper> elencoOrdinativiWrapper = new ArrayList<SiacTOrdinativoWrapper>();
+//		
+//		for (SiacTOrdinativo o : elencoOrdinativi) {
+//			
+//			SiacTOrdinativoWrapper ow = map(o, SiacTOrdinativoWrapper.class);
+//			
+//			mapEntityToWrapper(o, ow, SiacTOrdinativoDataAnnullamentoMapper.class);
+//			mapEntityToWrapper(o, ow, mapperTypes);
+//			
+//			elencoOrdinativiWrapper.add(ow);
+//		}
+//
+//		return elencoOrdinativiWrapper;
 	}
 
 	private List<SiacTOrdinativo> internalRicercaOrdinativi(int idEnte, CriteriRicercaOrdinativi criteri) {
@@ -169,6 +216,18 @@ public class OrdinativoDad extends BoBaseDad {
 				criteri.getAttoAmministrativo(),
 				criteri.getSoggetto(),
 				criteri.getEscludiCollegatiProvvisoriCassa());
+	}
+
+	private List<SiacTOrdinativo> internalRicercaOrdinativo(int idEnte, CriteriRicercaOrdinativi criteri) {
+		return siacTOrdinativoDao.internalRicercaOrdinativo(idEnte, 
+					criteri.getCodiceTipo(),
+					criteri.getAnno(),
+					criteri.getNumeroDa(),
+					criteri.getNumeroA(),
+					criteri.getDataEmissioneDa(), 
+					DateUtils.ceiling(criteri.getDataEmissioneA(), Calendar.DAY_OF_MONTH),
+					criteri.getDataTrasmissioneOilDa(),
+					DateUtils.ceiling(criteri.getDataTrasmissioneOilA(), Calendar.DAY_OF_MONTH));
 	}
 
 	private List<SiacTOrdinativo> internalRicercaOrdinativiSiopePlus(int idEnte, CriteriRicercaOrdinativi criteri) {
@@ -225,6 +284,40 @@ public class OrdinativoDad extends BoBaseDad {
 					criteri.getEscludiCollegatiProvvisoriCassa(),
 					criteri.getIncludiVBDaTrasmettere(), 
 					criteri.getIncludiAnnulliDaTrasmettere());
+	}
+	
+	//SIAC-7639
+	public String modificaPianoDeiContiOrdinativoBackoffice(ModificaPianoDeiContiOrdinativo request) {
+		return siacTOrdinativoDao.modificaPianoDeiContiOrdinativoBackoffice(
+					StringEscapeUtils.escapeSql(request.getNumeroRemedy()),
+					request.getIdEnte(),
+					request.getTipoOrdinativo(),
+					request.getAnnoBilancio().toString(),
+					request.getOrdinativo().getNumero(),
+					StringUtils.isBlank(request.getEventoCodice()) ? 
+							"" : request.getEventoCodice(),
+					StringUtils.isBlank(request.getTipoEventoCodice()) ?
+							"" : request.getTipoEventoCodice(),
+					request.getPianoDeiConti().getCodice(),
+					"I".equals(request.getTipoOrdinativo()) && request.getModificaAccertamento() ? 1 : 0,
+					request.getAggiornaGenerale() ? 1 : 0,
+					request.getAggiornaGSAGenerale() ? 1 : 0,
+					request.getInserisciGenerale() ? 1 : 0,
+					request.getInserisciGSAGenerale() ? 1 : 0
+				);
+	}
+	//
+	
+//	public List<SiacTOrdinativo> internalRicercaOrdinativiDaFlusso(Integer uid, String anno, String codiceTipoOrdinativi) {
+//		return siacTOrdinativoDao.ricercaOrdinativiDaFlusso(
+//				uid != null ? uid : 0, 
+//				anno != null ? anno : "", 
+//				codiceTipoOrdinativi != null ? codiceTipoOrdinativi : "");
+//	}
+
+	public List<SiacTOrdinativo> internalRicercaOrdinativiDaFlusso(Integer uid, String codiceTipoOrdinativi) {
+		return siacTOrdinativoDao.ricercaOrdinativiDaFlusso(
+				uid != null ? uid : 0, codiceTipoOrdinativi != null ? codiceTipoOrdinativi : "");
 	}
 
 }

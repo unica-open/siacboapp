@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ordinativi" extends="default" namespace="/">
+		
+		<!-- SIAC-8699 -->
+		<!-- 
+		<action name="gestioneOrdinativi" class="gestioneOrdinativiAction">
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>	
+			<result name="preparaVBOrdinativi" type="redirectAction">
+				<param name="actionName">preparaVBOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="sbloccaOrdinativi" type="redirectAction">
+				<param name="actionName">sbloccaOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="sbloccaOrdinativiSiopePlus" type="redirectAction">
+				<param name="actionName">sbloccaOrdinativiSiopePlus</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="trasmettiOrdinativi" type="redirectAction">
+				<param name="actionName">trasmettiOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="trasmettiOrdinativiSiopePlus" type="redirectAction">
+				<param name="actionName">trasmettiOrdinativiSiopePlus</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="attivaTrasmissioneOrdinativi" type="redirectAction">
+				<param name="actionName">attivaTrasmissioneOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="disattivaTrasmissioneOrdinativi" type="redirectAction">
+				<param name="actionName">disattivaTrasmissioneOrdinativi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+			<result name="associaProvvisoriCassa" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi_associaProvvisoriCassa</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>			
+		</action>
+		 -->
+		 
+		<action name="gestioneOrdinativi" class="gestioneOrdinativiAction">
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_preparaVB" class="gestioneOrdinativiAction" method="preparaVB">
+			<result name="preparaVBOrdinativi" type="redirectAction">preparaVBOrdinativi</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_sblocca" class="gestioneOrdinativiAction" method="sblocca">
+			<result name="sbloccaOrdinativi" type="redirectAction">sbloccaOrdinativi</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_sbloccaSiopePlus" class="gestioneOrdinativiAction" method="sbloccaSiopePlus">
+			<result name="sbloccaOrdinativiSiopePlus" type="redirectAction">sbloccaOrdinativiSiopePlus</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>	
+		<action name="gestioneOrdinativi_trasmetti" class="gestioneOrdinativiAction" method="trasmetti">
+			<result name="trasmettiOrdinativi" type="redirectAction">trasmettiOrdinativi</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_trasmettiSiopePlus" class="gestioneOrdinativiAction" method="trasmettiSiopePlus">
+			<result name="trasmettiOrdinativiSiopePlus" type="redirectAction">trasmettiOrdinativiSiopePlus</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_attivaTrasmissione" class="gestioneOrdinativiAction" method="attivaTrasmissione">
+			<result name="attivaTrasmissioneOrdinativi" type="redirectAction">attivaTrasmissioneOrdinativi</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_disattivaTrasmissione" class="gestioneOrdinativiAction" method="disattivaTrasmissione">
+			<result name="disattivaTrasmissioneOrdinativi" type="redirectAction">disattivaTrasmissioneOrdinativi</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+		<action name="gestioneOrdinativi_associaProvvisoriCassa" class="gestioneOrdinativiAction" method="associaProvvisoriCassa">
+			<result name="associaProvvisoriCassa" type="redirectAction">associaProvvisoriCassa</result>
+			<result name="success">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+			<result name="input">/jsp/ordinativi/gestioneOrdinativi.jsp</result>
+		</action>
+
+
+
+
+		<action name="attivaTrasmissioneOrdinativi" class="attivaTrasmissioneOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="attivaTrasmissioneOrdinativi_conferma" class="attivaTrasmissioneOrdinativiAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="disattivaTrasmissioneOrdinativi" class="disattivaTrasmissioneOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="disattivaTrasmissioneOrdinativi_conferma" class="disattivaTrasmissioneOrdinativiAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+
+		<action name="associaProvvisoriCassa" class="associaProvvisoriCassaAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="associaProvvisoriCassa_conferma" class="associaProvvisoriCassaAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		
+		<action name="preparaVBOrdinativi" class="preparaVBOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="preparaVBOrdinativi_conferma" class="preparaVBOrdinativiAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<!-- //duplicata	
+		<action name="preparaVBOrdinativi" class="preparaVBOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		 -->
+	
+		<action name="sbloccaOrdinativi" class="sbloccaOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="sbloccaOrdinativi_conferma" class="sbloccaOrdinativiAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="sbloccaOrdinativiSiopePlus" class="sbloccaOrdinativiSiopePlusAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="sbloccaOrdinativiSiopePlus_conferma" class="sbloccaOrdinativiSiopePlusAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="trasmettiOrdinativi" class="trasmettiOrdinativiAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="trasmettiOrdinativi_conferma" class="trasmettiOrdinativiAction" method="conferma">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+
+
+		<action name="trasmettiOrdinativiSiopePlus" class="trasmettiOrdinativiSiopePlusAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+
+		<action name="trasmettiOrdinativiSiopePlus_conferma" method="conferma" class="trasmettiOrdinativiSiopePlusAction">
+			<result name="success">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="input">/jsp/ordinativi/confermaGestioneOrdinativi.jsp
+			</result>
+			<result name="gestioneOrdinativi" type="redirectAction">
+				<param name="actionName">gestioneOrdinativi</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+
+
+
+		<action name="ricercaFlussi" class="ricercaFlussiAction">
+			<result name="success">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="input">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="risultatiRicercaFlussi" type="redirectAction">
+				<param name="actionName">risultatiRicercaFlussi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="ricercaFlussi_cerca" class="ricercaFlussiAction" method="cerca">
+			<result name="success">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="input">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="risultatiRicercaFlussi" type="redirectAction">
+				<param name="actionName">risultatiRicercaFlussi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="ricercaFlussi_cerca" class="ricercaFlussiAction" method="cerca">
+			<result name="success">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="input">/jsp/ordinativi/ricercaFlussi.jsp</result>
+			<result name="risultatiRicercaFlussi" type="redirectAction">
+				<param name="actionName">risultatiRicercaFlussi</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
+		
+		<action name="risultatiRicercaFlussi" class="risultatiRicercaFlussiAction">
+			<result name="success">/jsp/ordinativi/risultatiRicercaFlussi.jsp</result>
+		</action>
+	<!-- 
+	 -->
+		<action name="consultaFlusso_cerca" class="consultaFlussoAction" method="cerca">
+			<result name="success">/jsp/ordinativi/consultaFlusso.jsp</result>
+		</action>
+	 
+		<!-- SIAC-7639 -->
+		<action name="modificaPianoDeiContiOrdinativo" class="backofficeModificaPianoDeiContiOrdinativoAction">
+			<result name="success">/jsp/ordinativi/backofficeModificaPianoDeiContiOrdinativo/backofficeModificaPianoDeiContiOrdinativo.jsp</result>
+		</action>
+
+		<action name="ricercaModificaPianoDeiContiOrdinativo" class="ricercaModificaPianoDeiContiOrdinativoAction">
+			<result name="success">/jsp/ordinativi/backofficeModificaPianoDeiContiOrdinativo/backofficeModificaPianoDeiContiOrdinativo.jsp</result>
+			<result name="input">/jsp/ordinativi/backofficeModificaPianoDeiContiOrdinativo/backofficeModificaPianoDeiContiOrdinativo.jsp</result>
+		</action>
+
+		<action name="modificaPianoDeiContiOrdinativo_modifica" class="backofficeModificaPianoDeiContiOrdinativoAction" method="modificaPianoDeiContiOrdinativo">
+			<result name="success" type="redirectAction">
+				<param name="actionName">modificaPianoDeiContiOrdinativo</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/jsp/ordinativi/backofficeModificaPianoDeiContiOrdinativo/backofficeModificaPianoDeiContiOrdinativo.jsp</result>
+		</action>
+		<!-- SIAC-7639 -->
+		
+	
+	</package>
+
+
+
+</struts>

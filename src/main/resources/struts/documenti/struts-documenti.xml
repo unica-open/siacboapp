@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="documenti" extends="default" namespace="/">
+
+		<action name="annullaAttivazioniContabili" class="annullaAttivazioniContabiliAction">
+			<result name="success">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+			<result name="input">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+<!--  			<result name="associaProvvisoriCassa" type="redirectAction">
+				<param name="actionName">associaProvvisoriCassa</param>
+				<param name="namespace">/</param>
+				<param name="method">execute</param>
+			</result>
+	-->	</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="annullaAttivazioniContabili_cerca" class="annullaAttivazioniContabiliAction" method="cerca">
+			<result name="success">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+			<result name="input">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+		</action>
+		
+		<action name="annullaAttivazioniContabili_annullaAttivazioniContabili" class="annullaAttivazioniContabiliAction" method="annullaAttivazioniContabili">
+			<result name="success">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+			<result name="input">/jsp/documenti/annullaAttivazioniContabili.jsp</result>
+		</action>
+	</package>
+
+
+
+</struts>

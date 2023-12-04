@@ -225,7 +225,7 @@ SPDX-License-Identifier: EUPL-1.2
 			  
 			  	<s:if test="idReport != null">	
 			  
-			  <s:submit id="aggiorna" cssClass="btn btn-primary pull-right" method="update"  value="aggiorna" />
+			  <s:submit id="aggiorna" cssClass="btn btn-primary pull-right" action="elencoImportiReport_update"  value="aggiorna" />
 				</s:if>
 		  </s:form>     	
 		  </p>

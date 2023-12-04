@@ -4,18 +4,15 @@
 */
 package it.csi.siac.siacboapp.integration.repository;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.entity.SiacRGruppoAccount;
 
-@Component
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+
 public interface SiacRGruppoAccountRepository extends JpaRepository<SiacRGruppoAccount, Integer> {
 	@Modifying
 	@Query("DELETE FROM SiacRGruppoAccount ga " + " WHERE ga.account.uid=:idAccount")

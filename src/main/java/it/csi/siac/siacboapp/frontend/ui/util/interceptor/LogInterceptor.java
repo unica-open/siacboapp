@@ -18,6 +18,7 @@ import it.csi.siac.siaccommon.util.log.LogUtil;
  * @see it.csi.siac.siaccorser.util.log.CoreLogHandler
  * 
  */
+@Deprecated
 public class LogInterceptor extends AbstractInterceptor {
 
 	/** Per la serializzazione */

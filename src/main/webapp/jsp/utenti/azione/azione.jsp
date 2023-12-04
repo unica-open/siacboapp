@@ -150,12 +150,14 @@ SPDX-License-Identifier: EUPL-1.2
 							<a class="btn btn-secondary"
 								href="/siacboapp/azioni/elencoAzioni.do" class="btn">indietro</a>
 
-							<span class="pull-right"> <s:if test="azione == null">
-									<s:submit cssClass="btn btn-primary" method="create"
-										value="inserisci azione" />
-								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
-										value="aggiorna azione" />
+							<span class="pull-right"> 
+								<s:if test="azione == null">
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="azione_create"	value="inserisci azione" />
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="azione_update"	value="aggiorna azione" />
 								</s:else>
 							</span>
 

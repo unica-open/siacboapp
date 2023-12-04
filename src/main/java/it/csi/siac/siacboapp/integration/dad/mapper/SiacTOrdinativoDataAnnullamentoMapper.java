@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.csi.siac.siacboapp.integration.dad.mapper.base.BaseEntityWrapperMapper;
-import it.csi.siac.siacboapp.integration.dao.gestioneordinativi.SiacTOrdinativoDao;
+import it.csi.siac.siacboapp.integration.dao.ordinativi.SiacTOrdinativoDao;
 import it.csi.siac.siacboapp.integration.entity.SiacTOrdinativo;
 import it.csi.siac.siacboapp.util.entitywrapper.SiacTOrdinativoWrapper;
 

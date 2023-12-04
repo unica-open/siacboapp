@@ -13,27 +13,56 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="success" >/jsp/indicatori/confNumeroAnniBilancioPrev.jsp</result>
 			<result name="confNumeroAnniBilancioPrev" type="redirectAction">confNumeroAnniBilancioPrev</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="confNumeroAnniBilancioPrev_update"  class="confNumeroAnniBilancioPrevAction"  method="update">
+			<result name="success" >/jsp/indicatori/confNumeroAnniBilancioPrev.jsp</result>
+			<result name="confNumeroAnniBilancioPrev" type="redirectAction">confNumeroAnniBilancioPrev</result>
+		</action>
+		
 		<action name="confIndicatoriEntrata"  class="confIndicatoriEntrataAction" >
 			<result name="success" >/jsp/indicatori/confIndicatoriEntrata.jsp</result>
 			<result name="confIndicatoriEntrata" type="redirectAction">confIndicatoriEntrata</result>
 		</action>
 
+		<!-- SIAC-8699 -->
+		<action name="confIndicatoriEntrata_update"  class="confIndicatoriEntrataAction" method="update">
+			<result name="success" >/jsp/indicatori/confIndicatoriEntrata.jsp</result>
+			<result name="confIndicatoriEntrata" type="redirectAction">confIndicatoriEntrata</result>
+		</action>
+		
 		<action name="confIndicatoriSpesa"  class="confIndicatoriSpesaAction" >
 			<result name="success" >/jsp/indicatori/confIndicatoriSpesa.jsp</result>
 			<result name="confIndicatoriSpesa" type="redirectAction">confIndicatoriSpesa</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="confIndicatoriSpesa_update"  class="confIndicatoriSpesaAction" method="update">
+			<result name="success" >/jsp/indicatori/confIndicatoriSpesa.jsp</result>
+			<result name="confIndicatoriSpesa" type="redirectAction">confIndicatoriSpesa</result>
+		</action>
+		
 		<action name="confIndicatoriSintetici"  class="confIndicatoriSinteticiAction" >
 			<result name="success" >/jsp/indicatori/confIndicatoriSintetici.jsp</result>
 			<result name="confIndicatoriSintetici" type="redirectAction">confIndicatoriSintetici</result>
 		</action>
 	
+		<!-- SIAC-8699 -->
+		<action name="confIndicatoriSintetici_update"  class="confIndicatoriSinteticiAction" method="update">
+			<result name="success" >/jsp/indicatori/confIndicatoriSintetici.jsp</result>
+			<result name="confIndicatoriSintetici" type="redirectAction">confIndicatoriSintetici</result>
+		</action>
+			
 		<action name="confIndicatoriSinteticiMissione13"  class="confIndicatoriSinteticiMissione13Action" >
 			<result name="success" >/jsp/indicatori/confIndicatoriSinteticiMissione13.jsp</result>
 			<result name="confIndicatoriSinteticiMissione13" type="redirectAction">confIndicatoriSinteticiMissione13</result>
 		</action>
 	
+		<!-- SIAC-8699 -->
+		<action name="confIndicatoriSinteticiMissione13_update"  class="confIndicatoriSinteticiMissione13Action" method="update">
+			<result name="success" >/jsp/indicatori/confIndicatoriSinteticiMissione13.jsp</result>
+			<result name="confIndicatoriSinteticiMissione13" type="redirectAction">confIndicatoriSinteticiMissione13</result>
+		</action>	
 	</package>
 
 </struts>

@@ -14,7 +14,7 @@ import org.apache.commons.lang.StringUtils;
 
 import it.csi.siac.siacboapp.integration.entity.SiacTReport;
 import it.csi.siac.siacboapp.integration.entity.SiacTReportImporti;
-import it.csi.siac.siaccommon.util.number.NumberUtils;
+import it.csi.siac.siaccommon.util.number.NumberUtil;
 import it.csi.siac.siaccommonapp.model.GenericModel;
 
 public class ElencoImportiReportModel extends GenericModel {
@@ -34,12 +34,16 @@ public class ElencoImportiReportModel extends GenericModel {
 	private Map<String, String> descrizioneImporti;
 
 	public void initImporti(List<SiacTReportImporti> elencoImporti) {
-		for (SiacTReportImporti imp : elencoImporti)
-			if (imp.isModificabile())
+		for (SiacTReportImporti imp : elencoImporti) {
+			if (imp.isModificabile()) {
 				addToImportiVariabili(imp);
-			else
+			}
+			else {
 				addImporto(elencoImportiFissi, imp);
-
+				
+			}
+		}
+		
 		for (String key : elencoDescrizioniNull.keySet())
 			elencoImportiVariabili.get(key).putAll(elencoDescrizioniNull.get(key));
 	}
@@ -117,7 +121,7 @@ public class ElencoImportiReportModel extends GenericModel {
 	}
 
 	public String toImporto(BigDecimal bd) {
-		return NumberUtils.toImporto(bd);
+		return NumberUtil.toImporto(bd);
 	}
 
 	// ////////////////////////////////////////

@@ -128,7 +128,6 @@ public class SiacTOrdinativo extends SiacTEnteBase {
 	public void setTipo(SiacDOrdinativoTipo tipo) {
 		this.tipo = tipo;
 	}
-
 	
 	public Date getDataTrasmissioneOil() {
 		return dataTrasmissioneOil;

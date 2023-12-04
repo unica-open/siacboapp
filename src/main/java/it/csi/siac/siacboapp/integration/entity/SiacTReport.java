@@ -42,6 +42,9 @@ public class SiacTReport extends SiacTEnteBase {
 	@Column(name = "rep_birt_codice")
 	private String codiceBirt;
 
+	@Column(name = "rep_ordina_elenco_variab")
+	private String ordinaElenco; // SIAC-7192 ordinamento nuova colonna
+
 	@OneToMany(mappedBy = "report", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	private Set<SiacRReportImporti> importi;
 
@@ -85,6 +88,14 @@ public class SiacTReport extends SiacTEnteBase {
 
 	public void setImporti(Set<SiacRReportImporti> importi) {
 		this.importi = importi;
+	}
+
+	public String getOrdinaElenco() {
+		return ordinaElenco;
+	}
+
+	public void setOrdinaElenco(String ordinaElenco) {
+		this.ordinaElenco = ordinaElenco;
 	}
 
 }

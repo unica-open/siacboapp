@@ -119,7 +119,8 @@ SPDX-License-Identifier: EUPL-1.2
 						<a class="btn btn-secondary" href="<s:property value="#urlCruscotto" />">indietro</a>
 						<a class="btn btn-secondary" href="gestioneLimiteImpegnabile.do">annulla</a>
 						
-						<s:submit id="cerca" cssClass="btn btn-primary pull-right" method="cerca" value="cerca" />
+						<!-- SIAC-8699 -->
+						<s:submit id="cerca" cssClass="btn btn-primary pull-right" action="gestioneLimiteImpegnabile_cerca" value="cerca" />
 					</p>
 				</s:form>
 			</div>

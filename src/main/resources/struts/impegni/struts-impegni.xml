@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="impegni" extends="default" namespace="/">
+
+		<action name="eliminaSoggettoCollegatoImpegno" class="eliminaSoggettoCollegatoImpegnoAction">
+			<result name="success">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+			<result name="input">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="eliminaSoggettoCollegatoImpegno_cerca" class="eliminaSoggettoCollegatoImpegnoAction"  method="cerca">
+			<result name="success">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+			<result name="input">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="eliminaSoggettoCollegatoImpegno_aggiornaSoggettoCollegato" class="eliminaSoggettoCollegatoImpegnoAction"  method="aggiornaSoggettoCollegato">
+			<result name="success">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+			<result name="input">/jsp/impegni/eliminaSoggettoCollegatoImpegno.jsp</result>
+		</action>
+		
+		<action name="aggiornaImpegnoConBloccoRagioneria" class="aggiornaImpegnoConBloccoRagioneriaAction">
+			<result name="success">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+		</action>
+	
+		<!-- SIAC-8699 -->
+		<action name="aggiornaImpegnoConBloccoRagioneria_cerca" class="aggiornaImpegnoConBloccoRagioneriaAction" method="cerca">
+			<result name="success">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+		</action>
+	
+		<!-- SIAC-8699 -->
+		<action name="aggiornaImpegnoConBloccoRagioneria_aggiornaTutto" class="aggiornaImpegnoConBloccoRagioneriaAction" method="aggiornaTutto">
+			<result name="success">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+			<result name="input">/jsp/impegni/aggiornaImpegnoConBloccoRagioneria.jsp</result>
+		</action>	
+	</package>
+
+
+
+</struts>

@@ -25,8 +25,8 @@ public class ElencoDecodificheAction extends GenericBoAction<ElencoDecodificheMo
 	@Override
 	public void prepare() throws Exception {
 		super.prepare();
-
-		model.setElencoTabelleDecodifica(decodificaService.getElencoTabelleDecodifica());
+		//SIAC-8092 si adegua la ricerca al filtro per le tabelle usate con relazioni ad altre tabelle
+		model.setElencoTabelleDecodifica(decodificaService.getElencoTabelleDecodificaUsate());
 	}
 
 	@Override

@@ -7,6 +7,7 @@ package it.csi.siac.siacboapp.integration.entity;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * The persistent class for the siac_t_movgest database table.
@@ -71,6 +73,21 @@ public class SiacTMovgest extends SiacTEnteBase {
 	/** The siac t movgest ts. */
 	@OneToMany(mappedBy="siacTMovgest")
 	private List<SiacTMovgestT> siacTMovgestTs;
+
+	@Column(name = "parere_finanziario")
+	private Boolean parereFinanziario;
+
+	@Transient
+	private SiacTMovgestT testata;
+	
+	@Column(name = "parere_finanziario_login_operazione")
+	private String parereFinanziarioLoginOperazione;
+	
+	@Column(name = "parere_finanziario_data_modifica")
+	private String parereFinanziarioDataModifica;
+	
+	
+
 
 	/**
 	 * Instantiates a new siac t movgest.
@@ -291,4 +308,90 @@ public class SiacTMovgest extends SiacTEnteBase {
 		movgestId = uid;
 	}
 
+	public Integer getAnno() {
+		return getMovgestAnno();
+	}
+	
+	public BigDecimal getNumero() {
+		return getMovgestNumero();
+	}
+	
+	public String getDescrizione() {
+		return getMovgestDesc();
+	}
+
+	public SiacTMovgestT getTestata() {
+		if (testata != null) {
+			return testata;
+		}	
+		
+		if (siacTMovgestTs == null) {
+			return null;
+		}
+		
+		for (SiacTMovgestT siacTMovgestT : siacTMovgestTs) {
+			if ("T".equals(siacTMovgestT.getSiacDMovgestTsTipo().getMovgestTsTipoCode()) && siacTMovgestT.isEntitaValida()) {
+				return testata = siacTMovgestT;
+			}
+		}
+				
+		return null;
+	}
+	
+	public String getCup() {
+		return getTestata() == null ? null : getTestata().getCup();
+	}
+	
+	public Boolean getFlagSoggettoDurc() {
+		return getTestata() == null ? null : getTestata().getFlagSoggettoDurc();
+	}
+
+	public Boolean getFlagSdf() {
+		return getTestata() == null ? null : getTestata().getFlagSdf();
+	}
+
+	//SIAC-7884
+	public Boolean getFlagPrenotazione() {
+		return getTestata() == null ? null : getTestata().getFlagPrenotazione();
+	}
+
+	public Boolean getFlagPrenotazioneLiquidabile() {
+		return getTestata() == null ? null : getTestata().getFlagPrenotazioneLiquidabile();
+	}
+
+	public SiacTSoggetto getSoggetto() {
+		return getTestata() == null ? null : getTestata().getSoggetto();
+	}
+	
+	public SiacDSoggettoClasse getClasseSoggetto() {
+		return getTestata() == null ? null : getTestata().getClasseSoggetto();
+	}	
+	
+	public SiacTAttoAmm getAttoAmministrativo() {
+		return getTestata() == null ? null : getTestata().getAttoAmministrativo();
+	}
+
+	public Boolean getParereFinanziario() {
+		return parereFinanziario;
+	}
+
+	public void setParereFinanziario(Boolean parereFinanziario) {
+		this.parereFinanziario = parereFinanziario;
+	}
+
+	public String getParereFinanziarioLoginOperazione() {
+		return parereFinanziarioLoginOperazione;
+	}
+
+	public void setParereFinanziarioLoginOperazione(String parereFinanziarioLoginOperazione) {
+		this.parereFinanziarioLoginOperazione = parereFinanziarioLoginOperazione;
+	}
+
+	public String getParereFinanziarioDataModifica() {
+		return parereFinanziarioDataModifica;
+	}
+
+	public void setParereFinanziarioDataModifica(String parereFinanziarioDataModifica) {
+		this.parereFinanziarioDataModifica = parereFinanziarioDataModifica;
+	}
 }

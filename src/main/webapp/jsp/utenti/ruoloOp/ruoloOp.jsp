@@ -112,14 +112,15 @@ SPDX-License-Identifier: EUPL-1.2
 
 
 						<p>
-							<a class="btn btn-secondary"
-								href="/siacboapp/ruoloOp/elencoRuoliOp.do">indietro</a> <span
-								class="pull-right"> <s:if test="ruoloOp == null">
-									<s:submit cssClass="btn btn-primary" method="create"
-										value="inserisci ruolo" />
-								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
-										value="aggiorna ruolo" />
+							<a class="btn btn-secondary" href="/siacboapp/ruoloOp/elencoRuoliOp.do">indietro</a> 
+							<span class="pull-right"> 
+								<s:if test="ruoloOp == null">
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="ruoloOp_create" value="inserisci ruolo" />
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="ruoloOp_update" value="aggiorna ruolo" />
 								</s:else>
 							</span>
 						</p>

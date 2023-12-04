@@ -25,7 +25,10 @@ function doLog(msg, level) {
 function showErrors(errors) {
 	if (errors.length > 0) {
 		
-		var alertErr = $(".alert-error");
+        var alertErr = $(".alert-error");
+        // if(alertErr === 'undefined'){
+        //     alertErr = $('#ERRORI');
+        // }
 		var alertErrUl = alertErr.find('ul');
 		
 		for (var ei in errors) {
@@ -34,10 +37,31 @@ function showErrors(errors) {
 		
 		alertErr.show();
 		
-		alertErr.get(0).scrollIntoView();
+		alertErr[0].scrollIntoView();
 	}
 	
 	return errors.length > 0;
+}
+
+function showWarnings(warnings) {
+	if (warnings.length > 0) {
+		
+        var alertWarn = $(".alert-warning");
+        // if(alertWarn === 'undefined'){
+        //     alertWarn = $('#WARNINGS');
+        // }
+		var alertWarnUl = alertWarn.find('ul');
+		
+		for (var wi in warnings) {
+			alertWarnUl.append('<li>' + warnings[wi].codice +  ' - '  + warnings[wi].descrizione +  '</li>');	
+		}
+		
+		alertWarn.show();
+		
+		alertWarn[0].scrollIntoView();
+	}
+	
+	return warnings.length > 0;
 }
 
 function hideErrors() {
@@ -60,7 +84,7 @@ function showSpinner(id) {
 
 
 function importoToFloat(importo) {
-	return parseFloat(importo.replace(/\./g, '').replace(',', '.'));
+	return parseFloat((new String(importo)).replace(/\./g, '').replace(',', '.'));
 }
 
 
@@ -76,6 +100,19 @@ function floatToImporto(n) {
 			.replace(/(\,\d)$/, '$10')
 			.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
+
+/**
+ * Controllo che durante la digitazione 
+ * il testo inserito sia solo di tipo numerico
+ * alteimenti non inserisco il valore
+ * @param event
+ * @returns
+ */
+jQuery('.soloNumeri').keypress(function(event){
+    if(event.which != 8 && isNaN(String.fromCharCode(event.which))){
+        event.preventDefault();
+    }
+});
 
 
 /**
@@ -325,8 +362,8 @@ $(function()
 	
 	
 	
-	
-	$(".navbarLogin p.login-text.pull-left").remove(); // remove header description 
+	//SIAC-7705
+	// $(".navbarLogin p.login-text.pull-left").remove(); // remove header description 
     
     
     
@@ -467,6 +504,17 @@ $(function()
     	  });    
     }    
     
+
+    $.fn.placeholder = function(value) {
+    	$(this).attr('placeholder', value);    	
+    }    
     
+    //SIAC-7779
+    // Tooltip
+    jQuery(".tooltip-test").tooltip();
+    jQuery('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+    });
+
     
 });

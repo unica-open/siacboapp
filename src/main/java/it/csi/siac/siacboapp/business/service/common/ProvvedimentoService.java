@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.csi.siac.siacboapp.frontend.ui.model.common.CriteriRicercaProvvedimenti;
-import it.csi.siac.siacboapp.integration.dad.ProvvedimentoDad;
+import it.csi.siac.siacboapp.integration.dad.AttoAmministrativoDad;
 import it.csi.siac.siacboapp.integration.entity.SiacDAttoAmmTipo;
 import it.csi.siac.siacboapp.integration.repository.SiacDAttoAmmTipoRepository;
 import it.csi.siac.siacboapp.util.entitywrapper.SiacTAttoAmmWrapper;
@@ -27,13 +27,13 @@ public class ProvvedimentoService {
 	private SiacDAttoAmmTipoRepository siacDAttoAmmTipoRepository;
 
 	@Autowired
-	private ProvvedimentoDad provvedimentoDad;
+	private AttoAmministrativoDad attoAmministrativoDad;
 
 	public List<SiacDAttoAmmTipo> readElencoTipiAttoAmministrativo(Integer idEnte) {
 		return siacDAttoAmmTipoRepository.getElencoTipiAttoAmministrativo(idEnte);
 	}
 	
 	public List<SiacTAttoAmmWrapper> ricercaProvvedimenti(Integer idEnte, CriteriRicercaProvvedimenti criteri) {
-		return provvedimentoDad.ricercaProvvedimenti(idEnte, criteri);
+		return attoAmministrativoDad.ricercaProvvedimenti(idEnte, criteri);
 	}
 }

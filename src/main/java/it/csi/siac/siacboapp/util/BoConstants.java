@@ -4,6 +4,8 @@
 */
 package it.csi.siac.siacboapp.util;
 
+// simulazione rilascio
+
 public enum BoConstants {
 	ID_FAMIGLIA_TREE_STRUTTURA_AMMINISTRATIVA_CONTABILE("00005"),
 	

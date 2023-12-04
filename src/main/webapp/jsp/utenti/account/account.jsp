@@ -163,13 +163,15 @@ SPDX-License-Identifier: EUPL-1.2
 							<a class="btn btn-secondary"
 								href="/siacboapp/account/elencoAccount.do" class="btn">indietro</a>
 
-							<span class="pull-right"> <s:if
+							<span class="pull-right"> 
+								<s:if
 									test="accountEntity == null">
-									<s:submit cssClass="btn btn-primary" method="create"
-										value="inserisci account" />
-								</s:if> <s:else>
-									<s:submit cssClass="btn btn-primary" method="update"
-										value="aggiorna account" />
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="account_create"  value="inserisci account" />
+								</s:if> 
+								<s:else>
+									<!-- SIAC-8699 -->
+									<s:submit cssClass="btn btn-primary" action="account_update"  value="aggiorna account" />
 								</s:else>
 							</span>
 

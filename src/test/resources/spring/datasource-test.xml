@@ -27,69 +27,44 @@ SPDX-License-Identifier: EUPL-1.2
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		
-
-		<!-- #################### DEV-RP #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://10.136.6.151:5432/siac_consip_20170628_rp" /> -->
-<!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="siac" /> -->
-		
-		<!-- #################### DEV-MULT #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://10.136.6.151:5432/siac_consip_20170628_mult" /> -->
-<!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="siac" /> -->
-		
-		<!-- #################### CONSIP-MULT #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-consip.bilancio.csi.it:5432/CONSIP-MULT" /> -->
-<!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="mypass" /> -->
+		<!-- DATASOURCE AGGIORNATO A NIVOLA il 24/11/2021 (10.138.154.6) -->
 
 		<!-- #################### CONSIP-RP #################### -->
-		<property name="url" value="jdbc:postgresql://tst-dbsiac-consip.bilancio.csi.it:5432/CONSIP-RP" />
+		<property name="url" value="jdbc:postgresql://10.138.154.6:10276/CONSIP-RP" />
 		<property name="username" value="siac" />
 		<property name="password" value="mypass" />
 		
-		<!-- #################### TST #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://10.136.6.151:5432/siac_forn2_20170330" /> -->
+		<!-- #################### MULT #################### -->
+<!-- 		<property name="url" value="jdbc:postgresql://##################:###/#####" /> -->
 <!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="siac" /> -->
-		
+<!-- 		<property name="password" value="mypass" /> -->
 		
 		<!-- #################### COLL ################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://coll-db1.bilancio.csi.it:5432/COLL-MULT" /> -->
+<!-- 		<property name="url" value="jdbc:postgresql://10.138.154.6:10218/TSTBIL1" /> -->
 <!-- 		<property name="username" value="siac" /> -->
 <!-- 		<property name="password" value="mypass" /> -->
 
 		<!-- #################### FORN1 ################## -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-forn1.bilancio.csi.it:5432/TSTBIL1" /> -->
+<!-- 		<property name="url" value="jdbc:postgresql://10.138.154.6:10275/TSTBIL1" /> -->
 <!-- 		<property name="username" value="siac" /> -->
 <!-- 		<property name="password" value="mypass" /> -->
 
-		<!-- #################### FORN2-RP ################## -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-forn2.bilancio.csi.it:5432/FORN2-RP" /> -->
+		<!-- #################### FORN2 ################## -->
+<!-- 		<property name="url" value="jdbc:postgresql://10.138.154.6:10217/TSTBIL1" /> -->
 <!-- 		<property name="username" value="siac" /> -->
 <!-- 		<property name="password" value="mypass" /> -->
-
-		<!-- #################### FORN2-CMTO ################## -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-forn2.bilancio.csi.it:5432/FORN2-CMTO" /> -->
-<!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="mypass" /> -->
-
-		<!-- #################### FORN2-MULT ################## -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-forn2.bilancio.csi.it:5432/FORN2-MULT" /> -->
-<!-- 		<property name="username" value="siac" /> -->
-<!-- 		<property name="password" value="mypass" /> -->
-
 
 		<!-- #################### INTEG #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-integ.bilancio.csi.it:5432/TSTBIL1" /> -->
+<!-- 		<property name="url" value="jdbc:postgresql://10.138.154.6:10739/TSTBIL1" /> -->
 <!-- 		<property name="username" value="siac" /> -->
 <!-- 		<property name="password" value="mypass" /> -->
 
 		<!-- #################### TST-UTENTE: fare attenzione!!! #################### -->
-<!-- 		<property name="url" value="jdbc:postgresql://tst-dbsiac-tu.bilancio.csi.it:5432/TSTBIL1" /> -->
+<!-- 		<property name="url" value="jdbc:postgresql://10.138.154.6:10754/TSTBIL1" /> -->
 <!-- 		<property name="username" value="siac" /> -->
 <!-- 		<property name="password" value="mypass" /> -->
 
+		<!-- DATASOURCE AGGIORNATO A NIVOLA il 24/11/2021 (10.138.154.6) -->
 
 		<property name="poolPreparedStatements"><value>true</value></property>
 		<property name="maxActive"><value>3</value></property>

@@ -16,7 +16,7 @@ import it.csi.siac.siacboapp.business.service.report.ImportiReportService;
 import it.csi.siac.siacboapp.frontend.ui.action.base.GenericBoAction;
 import it.csi.siac.siacboapp.frontend.ui.model.utenti.report.importi.ElencoImportiReportModel;
 import it.csi.siac.siacboapp.integration.entity.SiacTReport;
-import it.csi.siac.siaccommon.util.number.NumberUtils;
+import it.csi.siac.siaccommon.util.number.NumberUtil;
 import it.csi.siac.siaccorser.model.errore.ErroreCore;
 
 @Component
@@ -69,7 +69,7 @@ public class ElencoImportiReportAction extends GenericBoAction<ElencoImportiRepo
 
 				try {
 					importiReportService.updateImporto(imp.getKey(),
-							NumberUtils.importoToBigDecimal(imp.getValue()));
+							NumberUtil.importoToBigDecimal(imp.getValue()));
 				} catch (NumberFormatException nfe) {
 					addErrore(ErroreCore.FORMATO_NON_VALIDO.getErrore("importo", imp.getValue()));
 

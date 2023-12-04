@@ -113,26 +113,27 @@ $(function()
 		
 		var ztree = $.fn.zTree.getZTreeObj('treeStruttAmm');
 
-		var nodes = ztree.getNodes();
-        for(node in nodes) {
-            if(nodes.hasOwnProperty(node)) {
-                ztree.setChkDisabled(nodes[node], false, true, true);
-                ztree.checkNode(nodes[node], false, true, true);
-            }
+		if (ztree != null) {
+			var nodes = ztree.getNodes();
+	        for(node in nodes) {
+	            if(nodes.hasOwnProperty(node)) {
+	                ztree.setChkDisabled(nodes[node], false, true, true);
+	                ztree.checkNode(nodes[node], false, true, true);
+	            }
+	        }
+	
+			var node = ztree.getNodeByParam("uid", sacUid);
+	        ztree.refresh();
+	        ztree.checkNode(node, true, true, true);
+	        $('#SPAN_StrutturaAmministrativoContabile').text(node.descrizioneCompleta);
+	
+	        nodes = ztree.getNodes();
+	        for(node in nodes) {
+	            if(nodes.hasOwnProperty(node)) {
+	                ztree.setChkDisabled(nodes[node], true, true, true);
+	            }
+	        }
         }
-
-		var node = ztree.getNodeByParam("uid", sacUid);
-        ztree.refresh();
-        ztree.checkNode(node, true, true, true);
-        $('#SPAN_StrutturaAmministrativoContabile').text(node.descrizioneCompleta);
-
-        nodes = ztree.getNodes();
-        for(node in nodes) {
-            if(nodes.hasOwnProperty(node)) {
-                ztree.setChkDisabled(nodes[node], true, true, true);
-            }
-        }
-        
         $("#modaleGuidaProvvedimento").modal("hide");
 
 	});

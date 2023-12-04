@@ -7,6 +7,7 @@ package it.csi.siac.siacboapp.frontend.ui.handler.session;
 import it.csi.siac.siaccommonapp.handler.session.SessionParameter;
 
 public enum BoSessionParameter implements SessionParameter {
+	REDIRECT_ACTION_INFO,
 	REDIRECT_ACTION_MESSAGES,
 	REDIRECT_ACTION_ERRORS,
 	ELENCO_STRUTTURE_AMMINISTRATIVE_CONTABILI_UTENTE,

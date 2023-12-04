@@ -66,7 +66,7 @@ SPDX-License-Identifier: EUPL-1.2
 		</s:url>"><s:property value="%{codice + ' - ' + descrizione}" /></a></td>
 		
 	<td class="elimina tab_Right">	<a class="btn" onclick="return confirm('Eliminare <s:property value="%{codice + ' - ' + descrizione}" />?')" 
-	href="<s:url action="setProgetti" method="delete"><s:param name="uid" >
+	href="<s:url action="setProgetti_delete"><s:param name="uid" >
 					<s:property value="uid" /></s:param>
 		</s:url>">elimina<i class="icon-trash marginLeft1"></i></a> </td>
 		

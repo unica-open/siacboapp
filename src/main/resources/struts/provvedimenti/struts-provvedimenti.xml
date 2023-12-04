@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+SPDX-License-Identifier: EUPL-1.2
+-->
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="provvedimenti" extends="default" namespace="/">
+
+		<action name="modificaModalitaPagamentoAttoAllegato" class="modificaModalitaPagamentoAttoAllegatoAction">
+			<result name="success">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+			<result name="input">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="modificaModalitaPagamentoAttoAllegato_cerca" class="modificaModalitaPagamentoAttoAllegatoAction" method="cerca">
+			<result name="success">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+			<result name="input">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="modificaModalitaPagamentoAttoAllegato_aggiorna" class="modificaModalitaPagamentoAttoAllegatoAction" method="modificaModalitaPagamento">
+			<result name="success">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+			<result name="input">/jsp/provvedimenti/modificaModalitaPagamentoAttoAllegato.jsp</result>
+		</action>
+	</package>
+
+
+
+</struts>

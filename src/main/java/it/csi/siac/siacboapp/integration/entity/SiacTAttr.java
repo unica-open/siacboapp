@@ -33,6 +33,9 @@ public class SiacTAttr extends SiacTEnteBase {
 	@OneToMany(mappedBy = "attributo")
 	private List<SiacRProgrammaAttr> programmi;
 
+	@OneToMany(mappedBy="attributo")
+	private List<SiacRMovgestTsAttr> movimentiGestioneTS;
+
 	public String getCodice() {
 		return codice;
 	}

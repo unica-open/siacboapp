@@ -61,6 +61,13 @@ public class SiacTSoggetto extends SiacTEnteBase {
 	@OneToMany(mappedBy="soggetto")
 	private List<SiacRSoggettoStato> stati;
 	
+	@OneToMany(mappedBy="soggettoDa")
+	private List<SiacRSoggettoRelaz> relazioniSoggettoDa;
+
+	@OneToMany(mappedBy="soggettoA")
+	private List<SiacRSoggettoRelaz> relazioniSoggettoA;
+	
+	
 	public String getLoginCreazione() {
 		return loginCreazione;
 	}
@@ -152,5 +159,37 @@ public class SiacTSoggetto extends SiacTEnteBase {
 	
 	public SiacDSoggettoStato getStato() {
 		return stati != null && ! stati.isEmpty() ? stati.iterator().next().getStato() : null;
+	}
+
+	public List<SiacRSoggettoClasse> getClassi() {
+		return classi;
+	}
+
+	public void setClassi(List<SiacRSoggettoClasse> classi) {
+		this.classi = classi;
+	}
+
+	public List<SiacRSoggettoStato> getStati() {
+		return stati;
+	}
+
+	public void setStati(List<SiacRSoggettoStato> stati) {
+		this.stati = stati;
+	}
+
+	public List<SiacRSoggettoRelaz> getRelazioniSoggettoDa() {
+		return relazioniSoggettoDa;
+	}
+
+	public void setRelazioniSoggettoDa(List<SiacRSoggettoRelaz> relazioniSoggettoDa) {
+		this.relazioniSoggettoDa = relazioniSoggettoDa;
+	}
+
+	public List<SiacRSoggettoRelaz> getRelazioniSoggettoA() {
+		return relazioniSoggettoA;
+	}
+
+	public void setRelazioniSoggettoA(List<SiacRSoggettoRelaz> relazioniSoggettoA) {
+		this.relazioniSoggettoA = relazioniSoggettoA;
 	}
 }

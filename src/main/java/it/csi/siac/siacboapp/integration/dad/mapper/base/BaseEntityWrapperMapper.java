@@ -4,16 +4,19 @@
 */
 package it.csi.siac.siacboapp.integration.dad.mapper.base;
 
-import it.csi.siac.siacboapp.util.entitywrapper.BaseEntityWrapper;
-import it.csi.siac.siaccommonser.integration.entity.SiacTBase;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class BaseEntityWrapperMapper<O extends SiacTBase, OW extends BaseEntityWrapper> implements EntityWrapperMapper {
+import it.csi.siac.siacboapp.util.entitywrapper.BaseEntityWrapper;
+import it.csi.siac.siaccommon.util.mapper.BaseMapper;
+import it.csi.siac.siaccommonser.integration.entity.SiacTBase;
+import it.csi.siac.siaccommonser.util.dozer.DozerUtil;
+
+public abstract class BaseEntityWrapperMapper<O extends SiacTBase, OW extends BaseEntityWrapper> extends BaseMapper<O, OW> implements EntityWrapperMapper<O, OW> {
 	
-	public abstract void map(O o, OW ow);
+	@Autowired
+	protected DozerUtil dozerUtil;
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public void map(Object o, Object ow) {
-		map((O) o, (OW) ow);
+	protected <EW extends BaseEntityWrapper> EW map(SiacTBase obj, Class<EW> cls) {
+		return dozerUtil.mapNotNull(obj, cls);
 	}
 }

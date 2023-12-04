@@ -115,7 +115,7 @@ SPDX-License-Identifier: EUPL-1.2
 								href="<s:url action="elencoProgetti" ><s:param name="setProgettiId" value="setProgettiId" /></s:url>" class="btn">indietro</a>
 
 							<span class="pull-right">  
-									<s:submit cssClass="btn btn-primary" method="update"
+									<s:submit cssClass="btn btn-primary" action="progetto_update"
 										value="aggiorna progetto" />
 							</span>
 

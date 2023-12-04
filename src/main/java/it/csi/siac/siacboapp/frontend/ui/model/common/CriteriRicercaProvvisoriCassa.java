@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import it.csi.siac.siaccommon.util.number.NumberUtils;
+import it.csi.siac.siaccommon.util.number.NumberUtil;
 
 public class CriteriRicercaProvvisoriCassa implements Serializable {
 
@@ -103,11 +103,11 @@ public class CriteriRicercaProvvisoriCassa implements Serializable {
 	}
 	
 	public void setImportoDa(String importoDa) {
-		this.importoDa = NumberUtils.importoToBigDecimal(importoDa);
+		this.importoDa = NumberUtil.importoToBigDecimal(importoDa);
 	}
 
 	public void setImportoA(String importoA) {
-		this.importoA = NumberUtils.importoToBigDecimal(importoA);
+		this.importoA = NumberUtil.importoToBigDecimal(importoA);
 	}
 
 	public boolean isImportoDaRegolarizzarePositivo() {

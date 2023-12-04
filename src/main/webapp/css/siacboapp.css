@@ -22,3 +22,28 @@
 	padding-right: 100px;
 } */
 
+.f-left{
+	float: left;
+}
+
+/* SIAC-7705
+.navbarLogin p:nth-child(1).login-text {
+	left: initial;
+	text-align: right;
+}
+*/
+.spacing-lr {
+	margin: 0 1%;
+}
+
+.spacing-lr {
+	margin: 0 1%;
+}
+
+div#portalHeader_title a { 
+   text-indent: -1000px !important;
+}
+
+.control-group {
+	width: inherit !important;
+}

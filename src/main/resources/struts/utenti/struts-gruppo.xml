@@ -21,6 +21,20 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="elencoGruppi" type="redirectAction">elencoGruppi</result>
 		</action>
 
+		<!-- SIAC-8699 -->
+		<action name="gruppo_create"  class="gruppoAction" method="create">
+			<result name="success" >/jsp/utenti/gruppo/gruppo.jsp</result>
+			<result name="elencoGruppi" type="redirectAction">elencoGruppi</result>
+		</action>		
+		
+		<!-- SIAC-8699 -->
+		<action name="gruppo_update"  class="gruppoAction" method="update">
+			<result name="success" >/jsp/utenti/gruppo/gruppo.jsp</result>
+			<result name="elencoGruppi" type="redirectAction">elencoGruppi</result>
+		</action>
+		
+		
+		
 		<action name="eliminaGruppo" class="eliminaGruppoAction">
 			<result name="success" type="redirectAction">elencoGruppi</result>
 		</action>

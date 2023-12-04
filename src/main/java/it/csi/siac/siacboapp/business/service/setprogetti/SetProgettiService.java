@@ -4,7 +4,6 @@
 */
 package it.csi.siac.siacboapp.business.service.setprogetti;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -81,6 +80,11 @@ public class SetProgettiService {
 	public void update(SiacTFpvSetCronop setProgetti) {
 
 		siacTFpvSetCronopDao.update(setProgetti);
+	}
+
+	public void elimina(Integer setProgettiId, String loginOperazione) {
+
+		siacTFpvSetCronopRepository.cancellaSetProgetti(setProgettiId, loginOperazione);
 	}
 
 }

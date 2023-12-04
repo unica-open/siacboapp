@@ -20,7 +20,19 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="success" >/jsp/utenti/gruppoAzioni/gruppoAzioni.jsp</result>
 			<result name="elencoGruppiAzioni" type="redirectAction">elencoGruppiAzioni</result>
 		</action>
-
+		
+		<!-- SIAC-8699 -->
+		<action name="gruppoAzioni_create"  class="gruppoAzioniAction"  method="create">
+			<result name="success" >/jsp/utenti/gruppoAzioni/gruppoAzioni.jsp</result>
+			<result name="elencoGruppiAzioni" type="redirectAction">elencoGruppiAzioni</result>
+		</action>
+		
+		<!-- SIAC-8699 -->
+		<action name="gruppoAzioni_update"  class="gruppoAzioniAction"  method="update">
+			<result name="success" >/jsp/utenti/gruppoAzioni/gruppoAzioni.jsp</result>
+			<result name="elencoGruppiAzioni" type="redirectAction">elencoGruppiAzioni</result>
+		</action>
+		
 		<action name="eliminaGruppoAzioni" class="eliminaGruppoAzioniAction">
 			<result name="success" type="redirectAction">elencoGruppiAzioni</result>
 		</action>

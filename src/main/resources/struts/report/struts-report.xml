@@ -20,8 +20,18 @@ SPDX-License-Identifier: EUPL-1.2
 				<param name="method">execute</param>
 			</result>
 		</action>
-
-
+		
+		<!-- SIAC-8699 -->
+		<action name="elencoImportiReport_update" class="elencoImportiReportAction" method="update">
+			<result name="success">/jsp/report/elencoImportiReport.jsp</result>
+			<result name="input">/jsp/report/elencoImportiReport.jsp</result>
+			<result name="elencoImportiReport" type="redirectAction">
+				<param name="actionName">elencoImportiReport</param>
+				<param name="namespace">/</param>
+				<param name="idReport">${idReport}</param>
+				<param name="method">execute</param>
+			</result>
+		</action>
 
 
 	</package>

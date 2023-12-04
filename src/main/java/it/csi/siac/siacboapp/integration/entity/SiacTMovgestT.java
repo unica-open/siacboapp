@@ -13,129 +13,116 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-
-// TODO: Auto-generated Javadoc
-/**
- * The persistent class for the siac_t_movgest_ts database table.
- * 
- */
 @Entity
 @Table(name="siac_t_movgest_ts")
-@NamedQuery(name="SiacTMovgestT.findAll", query="SELECT s FROM SiacTMovgestT s")
 public class SiacTMovgestT extends SiacTEnteBase {
 	
-	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The movgest ts id. */
 	@Id
 	@SequenceGenerator(name="SIAC_T_MOVGEST_TS_MOVGESTTSID_GENERATOR", allocationSize=1, sequenceName="SIAC_T_MOVGEST_TS_ID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SIAC_T_MOVGEST_TS_MOVGESTTSID_GENERATOR")
 	@Column(name="movgest_ts_id")
 	private Integer movgestTsId;
 
-	/** The livello. */
 	private Integer livello;
 
-	/** The movgest ts code. */
 	@Column(name="movgest_ts_code")
 	private String movgestTsCode;
 
-	/** The movgest ts desc. */
 	@Column(name="movgest_ts_desc")
 	private String movgestTsDesc;
 	
-	/** The siac t movgest id padre. */
 	@ManyToOne
 	@JoinColumn(name="movgest_ts_id_padre")
 	private SiacTMovgestT siacTMovgestIdPadre;	
 	
 
-	/** The ordine. */
 	private String ordine;
 
-	//bi-directional many-to-one association to SiacRMovgestTsStato
 	@OneToMany(mappedBy="siacTMovgestT")
 	private List<SiacRMovgestTsStato> siacRMovgestTsStatos;
 
-	//bi-directional many-to-one association to SiacTMovgest
-	/** The siac t movgest. */
 	@ManyToOne
 	@JoinColumn(name="movgest_id")
 	private SiacTMovgest siacTMovgest;
 	
-	//bi-directional many-to-one association to SiacDMovgestTsTipo
-	/** The siac d movgest ts tipo. */
 	@ManyToOne
 	@JoinColumn(name="movgest_ts_tipo_id")
 	private SiacDMovgestTsTipo siacDMovgestTsTipo;
 
-	//bi-directional many-to-one association to SiacTMovgestTsDet
-	/** The siac t movgest ts dets. */
 	@OneToMany(mappedBy="siacTMovgestT")
-	private List<SiacTMovgestTsDet> siacTMovgestTsDets;
+	private List<SiacRMovgestClass> classi;
+
+	@OneToMany(mappedBy="siacTMovgestT")
+	private List<SiacTMovgestTsDet> siacTMovgestTsDets;	
 	
-	/**
-	 * Instantiates a new siac t movgest t.
-	 */
+	@OneToMany(mappedBy="movimentoGestioneTS")
+	private List<SiacRMovgestTsSog> soggetti;
+
+	@Transient
+	private SiacDSoggettoClasse classeSoggetto;
+
+	@OneToMany(mappedBy="movimentoGestioneTS")
+	private List<SiacRMovgestTsSogclasse> classiSoggetto;
+	
+	@Transient
+	private SiacTSoggetto soggetto;
+
+	@Transient
+	private String cup;
+
+	@Transient
+	private Boolean flagSoggettoDurc;
+
+	@Transient
+	private Boolean flagSdf;
+
+	//SIAC-7884
+	@Transient
+	private Boolean flagPrenotazione;
+
+	@Transient
+	private Boolean flagPrenotazioneLiquidabile;
+
+	@OneToMany(mappedBy="movimentoGestioneTS")
+	private List<SiacRMovgestTsAttoAmm> attiAmministrativi;
+	
+	@OneToMany(mappedBy="movimentoGestioneTS")
+	private List<SiacRMovgestTsAttr> attributi;
+	
+	@Transient
+	private SiacTAttoAmm attoAmministrativo;
+
 	public SiacTMovgestT() {
 	}
 
-	/**
-	 * Gets the movgest ts id.
-	 *
-	 * @return the movgest ts id
-	 */
 	public Integer getMovgestTsId() {
 		return this.movgestTsId;
 	}
 
-	/**
-	 * Sets the movgest ts id.
-	 *
-	 * @param movgestTsId the new movgest ts id
-	 */
 	public void setMovgestTsId(Integer movgestTsId) {
 		this.movgestTsId = movgestTsId;
 	}
 
-	/**
-	 * Gets the livello.
-	 *
-	 * @return the livello
-	 */
+
 	public Integer getLivello() {
 		return this.livello;
 	}
 
-	/**
-	 * Sets the livello.
-	 *
-	 * @param livello the new livello
-	 */
 	public void setLivello(Integer livello) {
 		this.livello = livello;
 	}
 
-	/**
-	 * Gets the movgest ts code.
-	 *
-	 * @return the movgest ts code
-	 */
 	public String getMovgestTsCode() {
 		return this.movgestTsCode;
 	}
 
-	/**
-	 * Sets the movgest ts code.
-	 *
-	 * @param movgestTsCode the new movgest ts code
-	 */
 	public void setMovgestTsCode(String movgestTsCode) {
 		this.movgestTsCode = movgestTsCode;
 	}
@@ -302,4 +289,192 @@ public class SiacTMovgestT extends SiacTEnteBase {
 		movgestTsId = uid;
 	}
 
+	public List<SiacRMovgestTsSog> getSoggetti() {
+		return soggetti;
+	}
+
+	public void setSoggetti(List<SiacRMovgestTsSog> soggetti) {
+		this.soggetti = soggetti;
+	}
+
+	public List<SiacRMovgestTsSogclasse> getClassiSoggetto() {
+		return classiSoggetto;
+	}
+
+	public void setClassiSoggetto(List<SiacRMovgestTsSogclasse> classiSoggetto) {
+		this.classiSoggetto = classiSoggetto;
+	}
+
+
+	public SiacDSoggettoClasse getClasseSoggetto() {
+		if (classeSoggetto != null) {
+			return classeSoggetto;
+		}	
+		
+		if (classiSoggetto == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsSogclasse siacRMovgestTsSogclasse : classiSoggetto) {
+			if (siacRMovgestTsSogclasse.isEntitaValida()) {
+				return classeSoggetto = siacRMovgestTsSogclasse.getClasseSoggetto();
+			}
+		}
+				
+		return null;
+	}
+
+
+	public SiacTSoggetto getSoggetto() {
+		if (soggetto != null) {
+			return soggetto;
+		}	
+		
+		if (soggetti == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsSog siacRMovgestTsSog : soggetti) {
+			if (siacRMovgestTsSog.isEntitaValida()) {
+				return soggetto = siacRMovgestTsSog.getSoggetto();
+			}
+		}
+				
+		return null;
+	}
+
+
+	public SiacTAttoAmm getAttoAmministrativo() {
+		if (attoAmministrativo != null) {
+			return attoAmministrativo;
+		}	
+		
+		if (attiAmministrativi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttoAmm siacRMovgestTsAttoAmm : attiAmministrativi) {
+			if (siacRMovgestTsAttoAmm.isEntitaValida()) {
+				return attoAmministrativo = siacRMovgestTsAttoAmm.getAttoAmministrativo();
+			}
+		}
+				
+		return null;
+	}
+
+	public List<SiacRMovgestTsAttoAmm> getAttiAmministrativi() {
+		return attiAmministrativi;
+	}
+
+	public void setAttiAmministrativi(List<SiacRMovgestTsAttoAmm> attiAmministrativi) {
+		this.attiAmministrativi = attiAmministrativi;
+	}
+
+	public List<SiacRMovgestTsAttr> getAttributi() {
+		return attributi;
+	}
+
+	public void setAttributi(List<SiacRMovgestTsAttr> attributi) {
+		this.attributi = attributi;
+	}
+
+	public String getCup() {
+		if (cup != null) {
+			return cup;
+		}	
+		
+		if (attributi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttr siacRMovgestTsAttr : attributi) {
+			if (siacRMovgestTsAttr.isEntitaValida() && "cup".equals(siacRMovgestTsAttr.getAttributo().getCodice())) {
+				return cup = siacRMovgestTsAttr.getTesto();
+			}
+		}
+				
+		return null;
+	}
+	
+	public Boolean getFlagSoggettoDurc() {
+		if (flagSoggettoDurc != null) {
+			return flagSoggettoDurc;
+		}	
+		
+		if (attributi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttr siacRMovgestTsAttr : attributi) {
+			if (siacRMovgestTsAttr.isEntitaValida() && "flagSoggettoDurc".equals(siacRMovgestTsAttr.getAttributo().getCodice())) {
+				return flagSoggettoDurc = convertBooleanAttrToBoolean(siacRMovgestTsAttr.getBoolean_());
+			}
+		}
+				
+		return null;
+	}
+
+	public Boolean getFlagSdf() {
+		if (flagSdf != null) {
+			return flagSdf;
+		}	
+		
+		if (attributi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttr siacRMovgestTsAttr : attributi) {
+			if (siacRMovgestTsAttr.isEntitaValida() && "flagSDF".equals(siacRMovgestTsAttr.getAttributo().getCodice())) {
+				return flagSdf = convertBooleanAttrToBoolean(siacRMovgestTsAttr.getBoolean_());
+			}
+		}
+				
+		return null;
+	}
+	
+	//SIAC-7884
+	public Boolean getFlagPrenotazione() {
+		if (flagPrenotazione != null) {
+			return flagPrenotazione;
+		}	
+		
+		if (attributi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttr siacRMovgestTsAttr : attributi) {
+			if (siacRMovgestTsAttr.isEntitaValida() && "flagPrenotazione".equals(siacRMovgestTsAttr.getAttributo().getCodice())) {
+				return flagPrenotazione = convertBooleanAttrToBoolean(siacRMovgestTsAttr.getBoolean_());
+			}
+		}
+		
+		return null;
+	}
+	
+	public Boolean getFlagPrenotazioneLiquidabile() {
+		if (flagPrenotazioneLiquidabile != null) {
+			return flagPrenotazioneLiquidabile;
+		}	
+		
+		if (attributi == null) {
+			return null;
+		}
+		
+		for (SiacRMovgestTsAttr siacRMovgestTsAttr : attributi) {
+			if (siacRMovgestTsAttr.isEntitaValida() && "flagPrenotazioneLiquidabile".equals(siacRMovgestTsAttr.getAttributo().getCodice())) {
+				return flagPrenotazioneLiquidabile = convertBooleanAttrToBoolean(siacRMovgestTsAttr.getBoolean_());
+			}
+		}
+				
+		return null;
+	}
+	
+	private Boolean convertBooleanAttrToBoolean(String boolean_) {
+		return boolean_ == null ? null : "S".equals(boolean_) ? Boolean.TRUE : Boolean.FALSE;
+	}
+
+	public List<SiacRMovgestClass> getClassi() {
+		return classi;
+	}
+		
 }

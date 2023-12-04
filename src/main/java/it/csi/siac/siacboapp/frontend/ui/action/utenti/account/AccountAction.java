@@ -84,7 +84,7 @@ public class AccountAction extends GenericBoAction<AccountModel> {
 		int enteId = sessionHandler.getEnte().getUid();
 
 		List<SiacTClass> elencoStruttureAmministrativeContabili = classificatoreService
-				.getElencoStruttureAmministrativeContabili(enteId, sessionHandler.getAnnoEsercizio());
+				.getElencoStruttureAmministrativeContabili(enteId, sessionHandler.getAnnoBilancio());
 		
 		Collections.sort(elencoStruttureAmministrativeContabili, SiacTClassComparator.INSTANCE);
 		
@@ -96,13 +96,13 @@ public class AccountAction extends GenericBoAction<AccountModel> {
 	}
 
 	public String update() {
-		accountService.update(initAccount());
+		accountService.update(initAccount(), sessionHandler.getAnnoBilancio());
 
 		return "elencoAccount";
 	}
 
 	public String create() {
-		accountService.create(initAccount());
+		accountService.create(initAccount(), sessionHandler.getAnnoBilancio());
 
 		return "elencoAccount";
 	}

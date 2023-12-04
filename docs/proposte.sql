@@ -1,3 +1,7 @@
+/*
+*SPDX-FileCopyrightText: Copyright 2020 | CSI Piemonte
+*SPDX-License-Identifier: EUPL-1.2
+*/
 CREATE SEQUENCE siac.siac_d_proposta_preliminare_stato_prop_stato_id_seq
   INCREMENT 1 MINVALUE 1
   MAXVALUE 9223372036854775807 START 1

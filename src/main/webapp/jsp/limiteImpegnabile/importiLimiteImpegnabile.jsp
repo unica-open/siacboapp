@@ -98,7 +98,8 @@ SPDX-License-Identifier: EUPL-1.2
 					<p class="margin-medium">
 						<a class="btn btn-secondary" href="risultatiRicercaLimiteImpegnabile.do">indietro</a>
 						<a class="btn btn-secondary" href='importiLimiteImpegnabile.do?cuid=<s:property value="cuid" />'>annulla</a>
-						<s:submit cssClass="btn btn-primary pull-right" method="update" value="aggiorna" />
+						<!-- SIAC-8699 -->
+						<s:submit cssClass="btn btn-primary pull-right" action="importiLimiteImpegnabile_update" value="aggiorna" />
 					</p>
 				</s:form>
 			</div>

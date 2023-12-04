@@ -4,6 +4,21 @@ SIAC BO APP
 
 Funzionalità rilasciate
 --------------------------
+build 30/04/2020 versione 4.15.0
+ SIAC-7564
+
+build 18/03/2020 versione 4.14.0
+ SIAC-7192
+
+build DD/MM/YYYY versione 4.13.0
+ da verificare
+
+build 18/12/2019 versione 4.12.0
+ SIAC-7203
+
+build 27/11/2019 versione 4.11.0
+ SIAC-6881
+
 build 22/10/2019 versione 4.10.0
  Backoffice ordinativi
 

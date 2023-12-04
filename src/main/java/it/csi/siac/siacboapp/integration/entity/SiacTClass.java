@@ -27,8 +27,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "siac_t_class")
-@SecondaryTables({ @SecondaryTable(name = "siac_r_class_fam_tree", pkJoinColumns = {
-		@PrimaryKeyJoinColumn(name = "classif_id") }) })
+@SecondaryTables({ 
+	@SecondaryTable(name = "siac_r_class_fam_tree", pkJoinColumns = {@PrimaryKeyJoinColumn(name = "classif_id") }) })
 public class SiacTClass extends SiacTEnteBase {
 
 	private static final long serialVersionUID = 1211435199802843604L;

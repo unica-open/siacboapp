@@ -21,6 +21,21 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="elencoSoggetti" type="redirectAction">elencoSoggetti</result>
 		</action>
 
+		<!-- SIAC-8699 -->
+		<action name="soggetto_create" class="soggettoAction" method="create">
+			<result name="success">/jsp/utenti/soggetto/soggetto.jsp
+			</result>
+			<result name="elencoSoggetti" type="redirectAction">elencoSoggetti</result>
+		</action>
+		
+		<!-- SIAC-8699 -->	
+		<action name="soggetto_update" class="soggettoAction" method="update">
+			<result name="success">/jsp/utenti/soggetto/soggetto.jsp
+			</result>
+			<result name="elencoSoggetti" type="redirectAction">elencoSoggetti</result>
+		</action>
+		
+		
 		<action name="eliminaSoggetto" class="eliminaSoggettoAction">
 			<result name="success" type="redirectAction">elencoSoggetti</result>
 		</action>

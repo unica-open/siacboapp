@@ -6,7 +6,7 @@ SPDX-License-Identifier: EUPL-1.2
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<s:set name="annoIsNotRequired"><c:out value="${param.annoIsNotRequired}" default="false"/></s:set>
+<s:set var="annoIsNotRequired"><c:out value="${param.annoIsNotRequired}" default="false"/></s:set>
 
 <!--modale provvedimento -->
 <div id="modaleGuidaProvvedimento" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="guidaProvLabel" aria-hidden="true">
@@ -72,18 +72,20 @@ SPDX-License-Identifier: EUPL-1.2
 									<div id="struttAmm_modale" class="accordion-body collapse">
 										<div class="accordion-inner">
 											<ul id="treeStruttAmm_modale" class="ztree treeStruttAmm"></ul>
-											<button type="button" id="confermaStrutturaAmministrativoContabile_modale" 
-												class="btn btn-primary pull-right" data-toggle="collapse" data-target="#struttAmm_modale">Conferma</button>
-											<button type="button" class="btn btn-secondary pull-right"
-													id="deselezionaStrutturaAmministrativoContabile_modale">
-												Deseleziona
-											</button>
+											<s:if test="zTreeMultipli()">
+												<button type="button" id="confermaStrutturaAmministrativoContabile_modale" 
+													class="btn btn-primary pull-right" data-toggle="collapse" data-target="#struttAmm_modale">Conferma</button>
+												<button type="button" class="btn btn-secondary pull-right"
+														id="deselezionaStrutturaAmministrativoContabile_modale">
+													Deseleziona
+												</button>
+											</s:if>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<s:hidden id="%{'HIDDEN_StrutturaAmministrativoContabileUid_modale'}" name="criteriProvvedimenti.idStrutturaAmministrativoContabile" />
+							<s:hidden id="HIDDEN_StrutturaAmministrativoContabileUid_modale" name="criteriProvvedimenti.idStrutturaAmministrativoContabile" />
 <%-- 							<s:hidden id="%{'HIDDEN_StrutturaAmministrativoContabileCodice_modale'}" name="criteriProvvedimenti.strutturaAmministrativoContabile.codice" /> --%>
 <%-- 							<s:hidden id="%{'HIDDEN_StrutturaAmministrativoContabileDescrizione_modale'}" name="criteriProvvedimenti.strutturaAmministrativoContabile.descrizione" /> --%>
 						</div>
@@ -97,7 +99,7 @@ SPDX-License-Identifier: EUPL-1.2
 				</div>
 				<button type="button" id="pulsanteAnnullaRicercaProvvedimento" class="btn btn-secondary">annulla</button>
 				<a class="btn btn-primary pull-right collapsed" href="#" id="pulsanteRicercaProvvedimento" data-toggle="collapse">
-					<i class="icon-search icon"></i>&nbsp;cerca&nbsp;<i class="icon-spin icon-refresh spinner hide" id="SPINNER_Provvedimento"></i>
+					<i class="icon-search icon"></i>&nbsp;cerca&nbsp;<i class="icon-spin icon-refresh spinner hide" id="SPINNER_Provvedimento" style="display: none;"></i>
 				</a>
 
 			</fieldset>

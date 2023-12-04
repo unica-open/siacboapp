@@ -22,8 +22,30 @@ SPDX-License-Identifier: EUPL-1.2
 			<result name="input" >/jsp/setProgetti/setProgetti.jsp</result>
 			<result name="elencoSetProgetti" type="redirectAction">elencoSetProgetti</result>
 		</action>
-		
-		
+		<!-- SIAC-8699 -->
+		<action name="setProgetti_delete"  class="setProgettiAction" method="delete">
+			<result name="success" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="input" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="elencoSetProgetti" type="redirectAction">elencoSetProgetti</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="setProgetti_create"  class="setProgettiAction" method="create">
+			<result name="success" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="input" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="elencoSetProgetti" type="redirectAction">elencoSetProgetti</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="setProgetti_update"  class="setProgettiAction" method="update">
+			<result name="success" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="input" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="elencoSetProgetti" type="redirectAction">elencoSetProgetti</result>
+		</action>
+		<!-- SIAC-8699 -->
+		<action name="setProgetti_delete"  class="setProgettiAction" method="delete">
+			<result name="success" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="input" >/jsp/setProgetti/setProgetti.jsp</result>
+			<result name="elencoSetProgetti" type="redirectAction">elencoSetProgetti</result>
+		</action>
 	</package>
         
 </struts>
